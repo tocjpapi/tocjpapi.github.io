@@ -142,6 +142,7 @@ body {
     height: 100%;
     width: 100%;
     object-fit: cover;
+
 }
 
 .bg {
@@ -287,6 +288,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    filter: grayscale(20%);
   }
 
   .tag-display img{
@@ -480,5 +482,25 @@ body {
 .second{
   height: 100vh;
   width: 100vw;
-  background: red;
+  background: var(--bg);
+}
+
+.fade-in{
+  opacity: 1;
+
+  animation: fadeIn 0s ease forwards;
+}
+
+
+@keyframes fadeIn {
+  0% {
+      opacity: 1;
+  
+  }
+
+
+  100% {
+      opacity: 1;
+      transform: translateY(0px);
+  }
 }

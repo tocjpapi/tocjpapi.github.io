@@ -162,6 +162,17 @@ body {
   }
 
 
+  .turn-dark{
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    pointer-events: none;
+    z-index: 9;
+    background: #1b1b1b;
+}
+
   .first{
     height: 100vh;
     width: 100vw;

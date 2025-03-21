@@ -465,3 +465,9 @@ body {
 .contra-action:hover .contra-arrow p:nth-child(2) {
   transform: translateX(30%);
 }
+
+.second{
+  height: 40rem;
+  width: 100vw;
+  background: red;
+}

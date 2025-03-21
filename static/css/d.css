@@ -478,7 +478,7 @@ body {
 }
 
 .second{
-  height: 40rem;
+  height: 100vh;
   width: 100vw;
   background: red;
 }

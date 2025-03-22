@@ -309,7 +309,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: grayscale(20%);
   }
 
   .tag-display img{
@@ -568,6 +567,7 @@ body {
   justify-content: center;
   border: 1px dashed #333;
   background: #cfcfcf;
+  cursor: pointer;
 }
 
 .box-inner{
@@ -575,8 +575,56 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 45rem;
+  height: 35rem;
   width: fit-content;
   overflow: hidden;
   border: 1px dashed #333;
+}
+
+.second-version{
+  height: 10rem;
+  width: 100vw;
+  background: var(--bg);
+  position: relative;
+}
+
+.two{
+  position: absolute;
+  left: 4rem;
+}
+
+.whats-used{
+  position: absolute;
+  left: 4rem;
+  bottom: 4rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.box-description{
+  height: 40rem;
+  width: 100vw;
+  position: relative;
+}
+
+.desc-at-left{
+  position: absolute;
+  top: 8rem;
+  left: 4rem;
+}
+
+.desc-at-right{
+  position: absolute;
+  top: 8rem;
+  right: 4rem;
+}
+
+.desc-at-middle{
+  position: absolute;
+  top: 8rem;
+  left: 55%;
+  transform: translateX(-50%);
+  width: 40rem;
 }

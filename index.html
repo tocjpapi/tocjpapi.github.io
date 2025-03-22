@@ -113,7 +113,29 @@
     </div>
 
 
-    <div class="second fade-in"></div>
+    <div class="featured-boss fade-in">
+            <div class="featured">
+                <p><span>(06’)</span></p>
+            </div>
+    </div>
+
+    <div class="small-extra-text fade-in">
+        
+        <div class="the-extra-text">
+            <p>A rather petite collection containing and exploring my biggest interests. It's basically a display of the kind of work I could very often look back on and say, “I’m proud of this.”</p>
+        </div>
+    </div>
+
+    <div class="box-boss">
+        <div class="box">
+
+            <div class="box-inner">
+                <img src="static/images/Zestique/landing-page.png" alt="" srcset="">
+                <div class="bg"></div>
+            </div>
+
+        </div>
+    </div>
     <div class="tint"></div>
 
 
@@ -121,11 +143,17 @@
     <script src="static/js/gsap.js"></script>
     <script src="static/js/ScrollTrigger.js"></script>
     <script src="static/js/d.js"></script>
-    <script>
+   
+   
+   
+   
+   
+   
+   <script>
 
 
         const lenis = new Lenis({
-            duration: 1,
+            duration: 0.8,
             direction: 'vertical',
             gestureDirection: 'vertical',
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -267,7 +295,7 @@
     gsap.registerPlugin(ScrollTrigger);
     
     gsap.to(".first", {
-      yPercent: 230,
+      yPercent: 300,
       ease: "none",
       scrollTrigger: {
         trigger: ".first",
@@ -278,7 +306,7 @@
     });
     
     gsap.to(".turn-dark", {
-      opacity: 0.4,
+      opacity: 0.5,
       ease: "none",
       scrollTrigger: {
         trigger: ".first",

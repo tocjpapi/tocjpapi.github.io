@@ -94,6 +94,27 @@ html.lenis, html.lenis body {
       100% { transform: translate(5%,0) }
   }
 
+  .fade-in{
+    opacity: 1;
+  
+    animation: fadeIn 0s ease forwards;
+  }
+  
+  
+  @keyframes fadeIn {
+    0% {
+        opacity: 1;
+    
+    }
+  
+  
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+  }
+  
+
 html {
     margin: 0;
     padding: 0;
@@ -352,6 +373,7 @@ body {
 
 
 
+
 .bottom-line{
   position: absolute;
   width: 100%;
@@ -479,28 +501,82 @@ body {
   transform: translateX(30%);
 }
 
-.second{
-  height: 100vh;
+.featured-boss{
+  height: 35rem;
   width: 100vw;
   background: var(--bg);
-}
-
-.fade-in{
-  opacity: 1;
-
-  animation: fadeIn 0s ease forwards;
+  display: flex;
+  align-items: center;
+  border-top: 1px dashed #333;
 }
 
 
-@keyframes fadeIn {
-  0% {
-      opacity: 1;
-  
-  }
+.featured{
+  position: absolute;
+  left: 4rem;
+  font-size: 17rem;
+  bottom: 2rem;
+}
+
+.featured span{
+  font-family: 'serif';
+  font-size: 13.5rem;
+}
 
 
-  100% {
-      opacity: 1;
-      transform: translateY(0px);
-  }
+.featured sup{
+  font-size: 3.2rem;
+}
+
+.small-extra-text{
+  height: 20rem;
+  width: 100vw;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.the-extra-text{
+  position: absolute;
+  right: 4rem;
+  font-size: 1.5rem;
+  width: 30rem;
+}
+
+.the-extra-text p{
+  text-align: justify;
+}
+
+.box-boss{
+  height: 78rem;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.box{
+  height: 100%;
+  width: calc(100% - 8rem);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #333;
+  background: #cfcfcf;
+}
+
+.box-inner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 45rem;
+  width: fit-content;
+  overflow: hidden;
+  border: 1px dashed #333;
 }

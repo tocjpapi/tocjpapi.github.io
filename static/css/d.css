@@ -800,7 +800,7 @@ input::placeholder {
 .back-to-top{
   position: absolute;
   display: flex;
-  gap: 0.7rem;
+  gap: 0.5rem;
   bottom: 2.5rem;
   left: 60rem;
   font-size: 1.5rem;
@@ -822,4 +822,41 @@ input::placeholder {
 
 .t-d2{
   filter: grayscale(20%);
+}
+
+.back-to-top-arrow {
+  height: 1.5rem;
+  width: 3rem;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-to-top-arrow p {
+  font-family: 'yass';
+  text-align: center;
+  position: absolute;
+  transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) ;
+  white-space: nowrap;
+}
+
+
+.third-arrow{
+  padding-top: 1.2rem;
+}
+
+.back-to-top-arrow p:nth-child(2) {
+  transform: translateY(100%);
+}
+
+.back-to-top:hover .back-to-top-arrow p:nth-child(1) {
+  transform: translateY(-150%);
+}
+
+.back-to-top:hover .back-to-top-arrow p:nth-child(2) {
+  transform: translateY(-20%);
 }

@@ -96,7 +96,6 @@ html.lenis, html.lenis body {
 
   .fade-in{
     opacity: 1;
-  
     animation: fadeIn 0s ease forwards;
   }
   
@@ -539,7 +538,7 @@ body {
 .the-extra-text{
   position: absolute;
   right: 4rem;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   width: 30rem;
 }
 
@@ -570,6 +569,18 @@ body {
   cursor: pointer;
 }
 
+
+.dot{
+  position: absolute;
+  right: 2.5rem;
+  top: 2.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  background: var(--text);
+  border-radius: 50%;
+}
+
+
 .box-inner{
   position: absolute;
   top: 50%;
@@ -579,7 +590,9 @@ body {
   width: fit-content;
   overflow: hidden;
   border: 1px dashed #333;
+  background: #1b1b1b;
 }
+
 
 .second-version{
   height: 10rem;
@@ -611,20 +624,172 @@ body {
 
 .desc-at-left{
   position: absolute;
-  top: 8rem;
+  top: 12rem;
   left: 4rem;
 }
 
 .desc-at-right{
   position: absolute;
-  top: 8rem;
+  top: 12rem;
   right: 4rem;
 }
 
 .desc-at-middle{
   position: absolute;
-  top: 8rem;
+  top: 12rem;
   left: 55%;
   transform: translateX(-50%);
   width: 40rem;
 }
+
+.desc-at-middle p{
+  line-height: 150%;
+}
+
+.box-spacer{
+  height: 20rem;
+}
+
+.parallaxy{
+  height: 85rem;
+  width: calc(100vw - 8rem);
+  margin-left: 4rem;
+  overflow: hidden;
+  position: relative;
+  filter: grayscale();
+  background: #1b1b1b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallaxy img{
+  height: 128%;
+  position: absolute;
+  top: -28%;
+  opacity: 0.8;
+}
+
+.boxy{
+  height: 30rem;
+  width: 40rem;
+  background: var(--bg);
+  z-index: 2;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  border: 1px dashed #333;
+}
+
+
+
+.boxy .intro p{
+  font-size: 6rem;
+}
+
+
+.boxy .intro span{
+  font-family: 'serif';
+  font-size: 9.5rem;
+}
+
+.contact-stuff{
+  height: 6rem;
+  width: calc(100% - 8rem);
+  display: flex;
+  align-items: center;
+  border-top: 1px dashed #333;
+  border-bottom: 1px dashed #333;
+}
+
+.contact-bar {
+  position: absolute;
+  left: 4rem;
+}
+
+.contact-bar input{
+  width: 100%;
+}
+
+input {
+  all: unset;
+  box-sizing: border-box; 
+  appearance: none;
+  font-size: 1.5rem;
+}
+
+input::placeholder {
+  color: var(--text);
+  opacity: 0.7; 
+  font-size: 1.5rem;
+}
+
+.bottom-footer{
+  height: 110vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.botom-name{
+  position: absolute;
+  bottom: 1rem;
+  left: 4rem;
+  font-size: 30rem;
+  width: 100vw;
+}
+
+.botom-name p{
+  line-height: 70%;
+}
+
+.link p{
+  font-size: 7rem;
+  font-family: 'yass';
+}
+
+.social-media{
+  position: absolute;
+  left: 100rem;
+  top: calc(20rem);
+}
+
+
+.footer-pages{
+  position: absolute;
+  left: 60rem;
+  top: calc(20rem);
+}
+
+.bottom-lists{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.link{
+  position: relative;
+}
+
+
+.bottom-line4 {
+  width: 100%;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.link:hover .bottom-line4 {
+  transform: scaleX(1);
+}
+
+.link:not(:hover) .bottom-line4 {
+  transform-origin: right;
+}
+

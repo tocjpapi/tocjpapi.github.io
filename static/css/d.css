@@ -1095,3 +1095,12 @@ input::placeholder {
   transform-origin: center;
   transition: 1.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
+/* about-page */
+
+.page-top-spacer{
+  position: relative;
+  width: 100vw;
+  height: 22.5rem;
+  background: red;
+}

@@ -78,7 +78,18 @@ html.lenis, html.lenis body {
     top: 0;
     z-index: 999999999999;
   }
-            
+  
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .box-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
   
   @keyframes bg-animation {
       0% { transform: translate(0,0) }
@@ -376,7 +387,6 @@ body {
   position: absolute;
   width: 100%;
   bottom: -0.5rem;
-
   height: 1px;
   background: var(--text);
 }
@@ -555,6 +565,18 @@ body {
   text-align: justify;
 }
 
+.seo-anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999px; 
+  background: transparent;
+  z-index: 10;
+}
+
+
 .box-boss{
   height: 78rem;
   width: 100vw;
@@ -576,6 +598,10 @@ body {
   border: 1px dashed #333;
   background: #cfcfcf;
   cursor: pointer;
+}
+
+.na-d{
+  pointer-events: none;
 }
 
 
@@ -778,11 +804,6 @@ input::placeholder {
   line-height: 70%;
 }
 
-.link p{
-  font-size: 7rem;
-  font-family: 'yass';
-}
-
 .social-media{
   position: absolute;
   left: 100rem;
@@ -808,6 +829,8 @@ input::placeholder {
   position: relative;
   width: fit-content;
   cursor: pointer;
+  font-size: 7rem;
+  font-family: 'yass';
 }
 
 
@@ -1014,4 +1037,65 @@ input::placeholder {
 
 .inside-brief p{
   text-align: justify;
+}
+
+
+.up-next{
+  position: relative;
+  height: 50rem;
+  font-size: 15rem;
+  display: flex;
+  align-items: center;
+}
+
+.u-n-topic{
+  position: absolute;
+  left: 4rem;
+  cursor: pointer;
+}
+
+.bottom-line5 {
+  width: 98%;
+  position: absolute;
+  transform: scaleX(0);
+  bottom: -0.3rem;
+  height: 0.5rem;
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.u-n-topic:hover .bottom-line5 {
+  transform: scaleX(1);
+}
+
+.u-n-topic:not(:hover) .bottom-line5 {
+  transform-origin: right;
+}
+
+.up-next-framer{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 4rem;
+  height: 22rem;
+  width: 32rem;
+  background: #cfcfcf;
+  border: 1px dashed #333;
+  opacity: 0;
+  transition: 1.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  scale: 0.9;
+}
+
+.up-next-inner{
+  position: absolute;
+  height: 9rem;
+  width: fit-content;
+  overflow: hidden;
+  border: 1px dashed #333;
+  display: flex;
+  align-items: center;
+  scale: 1.15;
+  transform-origin: center;
+  transition: 1.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }

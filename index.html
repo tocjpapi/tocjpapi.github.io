@@ -138,23 +138,29 @@
 <!-- project 1 -->
 
     <div class="box-boss">
-        <div class="box">
+        
 
+        <div class="box" onclick="window.location.href='case1.html'">
+    
             <div class="dot"></div>
-
+        
             <div class="whats-used">
-            <div class="tiny-dash"></div>
-            <div class="word">
-                <p>Web Design & Development</p>
+                <div class="tiny-dash"></div>
+                <div class="word">
+                    <p>Web Design & Development</p>
+                </div>
             </div>
-            </div>
-
+        
             <div class="box-inner">
-                <img src="static/images/Zestique/landing-page.png" alt="" srcset="">
-
+                <img src="static/images/Zestique/landing-page.png" alt="Landing Page Preview">
             </div>
+        
 
+            <a href="case1.html" class="seo-anchor">Visit Page</a>
+        
         </div>
+        
+        
     </div>
 
     <div class="box-description">
@@ -195,6 +201,8 @@
 
             </div>
 
+
+            <a href="case2.html" class="seo-anchor">Visit Page</a>
         </div>
     </div>
 
@@ -233,6 +241,7 @@
     
                 </div>
     
+                <a href="case3.html" class="seo-anchor">Visit Page</a>
             </div>
         </div>
     
@@ -281,20 +290,20 @@
                 </div>
 
             <div class="links">
-                <div class="link">
+                <div class="link scroll-to-top">
                     <p>Index,</p>
                     <div class="bottom-line bottom-line4"></div>
                 </div>
                 <div class="link">
-                    <p>Projects,</p>
+                    <a href="projects.html">Projects,</a>
                     <div class="bottom-line bottom-line4"></div>
                 </div>
                 <div class="link">
-                    <p>About,</p>
+                    <a href="about.html">About,</a>
                     <div class="bottom-line bottom-line4"></div>
                 </div>
                 <div class="link">
-                    <p>Gallery.</p>
+                    <a href="gallery.html">Gallery.</a>
                     <div class="bottom-line bottom-line4"></div>
                 </div>
             </div>
@@ -304,21 +313,22 @@
                 <div class="label">
                     <p><span class="lol">Soci</span>als;</p>
                 </div>
+
             <div class="links">
                 <div class="link">
-                    <p>Instagram,</p>
+                    <a href="https://www.instagram.com/zyren.yp/" target="_blank" rel="noopener noreferrer">Instagram,</a>
                     <div class="bottom-line bottom-line4"></div>
                 </div>
                 <div class="link">
-                    <p>LinkedIn,</p>
+                    <a href="https://ng.linkedin.com/in/treasure-onwuchekwa-3925b22a0" target="_blank" rel="noopener noreferrer">LinkedIn,</a>
                     <div class="bottom-line bottom-line4"></div>
                 </div>
                 <div class="link">
-                    <p>Contra.</p>
+                    <a href="https://contra.com/tocj_5c03tow4" target="_blank" rel="noopener noreferrer">Contra.</a>
                     <div class="bottom-line bottom-line4"></div>
                 </div>
-                
             </div>
+
             </div>
 
 
@@ -359,7 +369,7 @@
 
 
 
-            <div class="back-to-top">
+            <div class="back-to-top scroll-to-top">
                 <div class="back-to-top-text">
                     <p>Back to Top</p>
                 </div>
@@ -389,9 +399,7 @@
    
    
    
-   <script>
-
-
+    <script>
         const lenis = new Lenis({
             duration: 1,
             direction: 'vertical',
@@ -400,17 +408,16 @@
             smooth: true,
             smoothTouch: false,
             touchMultiplier: 1,
-    
             infinite: false,
         });
-        
+    
         function raf(time) {
             lenis.raf(time);
             requestAnimationFrame(raf);
         }
-        
+    
         requestAnimationFrame(raf);
-        
+    
         let isDragging = false;
         let startY = 0;
         let startScrollY = 0;
@@ -421,19 +428,19 @@
         let clickDisabled = false;
         const friction = 0;
         const dragSensitivity = 1.2;
-        
+    
         function clampScroll(scrollY) {
             const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
             return Math.max(0, Math.min(scrollY, maxScrollY));
         }
-        
+    
         document.addEventListener('mousedown', (event) => {
             isDragging = true;
             startY = event.clientY;
             startScrollY = lenis.scroll;
             lastScrollY = startScrollY;
         });
-        
+    
         document.addEventListener('mousemove', (event) => {
             if (isDragging) {
                 const deltaY = (event.clientY - startY) * dragSensitivity;
@@ -443,60 +450,52 @@
                 }
             }
         });
-        
+    
         document.addEventListener('mouseup', () => {
             isDragging = false;
             clickDisabled = true;
-        
+    
             setTimeout(() => {
                 clickDisabled = false;
             }, 100);
-        
+    
             if (Math.abs(velocity) > 0.1) {
                 applyInertia();
             }
         });
-        
+    
         document.addEventListener('click', (event) => {
             if (clickDisabled) {
                 event.preventDefault(); 
                 event.stopPropagation();
             }
         });
-        
+    
         document.addEventListener('selectstart', (event) => {
             if (isDragging) {
                 event.preventDefault();
             }
         });
-        
+    
         document.addEventListener('keydown', (event) => {
             const scrollAmount = 200; 
-            if (event.key === 'ArrowUp') {
+            if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
                 targetScrollY = clampScroll(lenis.scroll - scrollAmount);
                 animateScroll();
-            } else if (event.key === 'ArrowDown') {
+            } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
                 targetScrollY = clampScroll(lenis.scroll + scrollAmount);
                 animateScroll();       
-            } else if (event.key === 'ArrowLeft') {
-                targetScrollY = clampScroll(lenis.scroll - scrollAmount);
-                animateScroll();
-            } else if (event.key === 'ArrowRight') {
-                targetScrollY = clampScroll(lenis.scroll + scrollAmount);
-                animateScroll();
-            }
-            
-            else if (event.key === ' ') {
+            } else if (event.key === ' ') {
                 event.preventDefault(); 
                 targetScrollY = clampScroll(lenis.scroll + window.innerHeight);
                 animateScroll();
             }
         });
-        
+    
         function easeOutCubic(t) {
             return 1 - Math.pow(1 - t, 3);
         }
-        
+    
         function animateScroll() {
             isAnimating = true;
             const currentScrollY = lenis.scroll;
@@ -504,14 +503,14 @@
             const easing = easeOutCubic(Math.min(1, Math.abs(distance) / 100));
             const newScrollY = currentScrollY + distance * easing;
             lenis.scrollTo(newScrollY);
-        
+    
             if (Math.abs(targetScrollY - newScrollY) > 0.5) {
                 requestAnimationFrame(animateScroll);
             } else {
                 isAnimating = false;
             }
         }
-        
+    
         function applyInertia() {
             const inertia = (targetScrollY - lastScrollY) * 0.3;
             function inertiaScroll() {
@@ -526,11 +525,20 @@
             inertiaScroll();
         }
     
+
+    document.querySelectorAll(".scroll-to-top").forEach(button => {
+    button.addEventListener("click", (e) => {
+        e.preventDefault();
+        lenis.scrollTo(0);
+    });
+});
+
     
-    
-    
+        
     </script>
 
+
+    
 <script>
     gsap.registerPlugin(ScrollTrigger);
     
@@ -579,52 +587,7 @@ gsap.to(img.querySelector("img"), {
 
 </script>
 
-    <!-- <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    const boxInner = document.querySelector(".box-inner");
-    const img = boxInner.querySelector("img");
 
 
-    const images = [
-        "static/images/Zestique/landing-page.png",
-        "static/images/Zestique/product-page.png",
-
-    ];
-
-    let index = 0;
-    let interval;
-
-    function startSlideshow() {
-        if (!interval) {
-            interval = setInterval(() => {
-                index = (index + 1) % images.length;
-                img.src = images[index];
-            }, 2000); // Change image every 2 seconds
-        }
-    }
-
-    function resetSlideshow() {
-        clearInterval(interval);
-        interval = null;
-        index = 0;
-        img.src = images[0]; // Reset to the first image
-    }
-
-    // Intersection Observer to detect visibility
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                startSlideshow();
-            } else {
-                resetSlideshow(); // Reset when out of view
-            }
-        });
-    }, { threshold: 0.5 });
-
-    observer.observe(boxInner);
-});
-
-    </script> -->
-    
 </body>
 </html>

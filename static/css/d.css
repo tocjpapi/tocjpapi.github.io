@@ -988,6 +988,16 @@ input::placeholder {
   position: relative;
 }
 
+.exact-spacer2{
+  height: 10rem;
+  position: relative;
+}
+
+.exact-spacer3{
+  height: 3rem;
+  position: relative;
+}
+
 .major-text{
   height: 35rem;
   width: 100vw;
@@ -1013,6 +1023,12 @@ input::placeholder {
   position: relative;
 }
 
+.title-right2{
+  height: 15rem;
+  width: 100vw;
+  position: relative;
+}
+
 .inside-title-right{
   position: absolute;
   left: calc(43rem + 4rem);
@@ -1020,7 +1036,7 @@ input::placeholder {
 }
 
 .brief{
-  height: 23rem;
+  height: 26rem;
   width: 100vw;
   position: relative;
 }
@@ -1101,6 +1117,170 @@ input::placeholder {
 .page-top-spacer{
   position: relative;
   width: 100vw;
-  height: 22.5rem;
-  background: red;
+  height: 20.75rem;
+}
+
+.continuation{
+  height: 74.5rem;
+  width: 100vw;
+  position: relative;
+}
+
+
+
+.continuation-text{
+  height: fit-content;
+  position: absolute;
+  left: 63rem;
+  font-family: 'yass';
+  font-size: 7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+}
+
+
+.a-random-image{
+  height: 23rem;
+  width: 100vw;
+  position: relative;
+}
+
+.inside-a-random-image{
+  height: 100%;
+  width: 84rem;
+  position: absolute;
+  right: 4rem;
+  background: #cfcfcf;
+  overflow: hidden;
+  border: 1px dashed #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7rem;
+}
+
+.inside-title-right2{
+  position: absolute;
+  left: calc(63rem);
+  font-size: 7rem;
+}
+
+.the-principles{
+  height: 50rem;
+  width: 100vw;
+  position: relative;
+}
+
+
+/* circle */
+
+.circle{
+  height: 20rem;
+  width: 20rem;
+  border-radius: 50%;
+  background: #e2e2e2;
+  mix-blend-mode: difference;
+}
+
+.circle1{
+  animation: left 1.5s infinite alternate ease-in-out;
+}
+
+
+@keyframes left {
+  from{
+    transform: translateX(35%);
+  }
+
+}
+
+
+.circle2{
+
+
+  animation: right 1.5s infinite alternate ease-in-out;
+}
+
+
+
+@keyframes right {
+  from{
+    transform: translateX(-35%);
+  }
+
+}
+
+
+/* box */
+
+.boxintus{
+  height: 20rem;
+  width: 20rem;
+  background: #e2e2e2;
+  mix-blend-mode: difference;
+  transition: border-radius 0.3s  ease;
+  animation: bounce 2s  1.5s infinite;
+}
+
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% {
+  transform: translateY(0);
+}
+40% {
+  transform: translateY(-75px);
+}
+60% {
+  transform: translateY(-32.5px);
+}
+}
+
+.boxintus:hover{
+  border-radius: 50%;
+  animation: none;
+}
+
+/* eye */
+
+.eye {
+  background-color: transparent;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 0%;
+  border-radius: 50%;
+position: relative;
+background: #e2e2e2;
+mix-blend-mode: difference;
+  overflow: hidden;
+}
+.pupil {
+  background: #e2e2e2;
+  mix-blend-mode: difference;
+  opacity: 1;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  margin-left: -5rem;
+  margin-top: -5rem;
+  position: absolute;
+  transition: all 1.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.animatetext{
+  animation: text 1.5s infinite alternate ease-in-out;
+  font-size: 7rem;
+}
+
+@keyframes text {
+  0% {
+      font-weight: 350;
+  }
+
+
+
+  100% {
+      font-weight: 100;
+  }
 }

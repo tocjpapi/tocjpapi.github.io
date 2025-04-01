@@ -601,6 +601,14 @@ body {
   border: 1px dashed #333;
 }
 
+
+.box-inner video {
+
+  height: 35rem;
+  width: fit-content;
+
+}
+
 .box-inner2{
   position: absolute;
   top: 50%;

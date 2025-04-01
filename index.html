@@ -25,24 +25,24 @@
 
             <div class="nav-center">
                 <div class="nav-item">
-                    <p><sup>(1)</sup> Projects,</p>
+                    <a href="projects.html"><sup>(1)</sup> Projects,</a>
 
                     <div class="bottom-line bottom-line3"></div>
                 </div>
                 <div class="nav-item">
-                    <p><sup>(2)</sup> About,</p>
+                    <a href="about.html"><sup>(2)</sup> About,</a>
 
                     <div class="bottom-line bottom-line3"></div>
                 </div>
                 <div class="nav-item">
-                    <p><sup>(3)</sup> Gallery,</p>
+                    <a href="gallery.html"><sup>(3)</sup> Gallery,</a>
 
                     <div class="bottom-line bottom-line3"></div>
                 </div>
             </div>
 
             <div class="nav-right">
-                <p>Get in Touch.</p>
+                <a href="contact.html">Get in Touch.</a>
 
                 <div class="bottom-line bottom-line1"></div>
                 <div class="bottom-line bottom-line2"></div>
@@ -91,7 +91,7 @@
 
             <div class="contra-action">
                 <div class="contr-hire-text">
-                    <p>Hire On Contra</p>
+                    <a href="https://contra.com/tocj_5c03tow4" target="_blank">Hire On Contra</a>
                 </div>
                 <div class="contra-arrow">
                     <p>→</p>
@@ -122,7 +122,7 @@
 <div class="second-version">
     <div class="contra-action two fade-in">
         <div class="contr-hire-text">
-            <p>Show All Work</p>
+            <a href="projects.html">Show All Work</a>
         </div>
         <div class="contra-arrow">
             <p>→</p>
@@ -464,12 +464,13 @@
             }
         });
     
-        document.addEventListener('click', (event) => {
-            if (clickDisabled) {
-                event.preventDefault(); 
-                event.stopPropagation();
-            }
-        });
+        document.addEventListener("click", (event) => {
+    if (clickDisabled && !event.target.closest("a")) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+});
+
     
         document.addEventListener('selectstart', (event) => {
             if (isDragging) {

@@ -14,30 +14,30 @@
 
             <div class="nav-left">
                 <div class="nav-item">
-                    <p><span class="lol">Desi</span>gner;</p>
+                    <a href="index.html"><span class="lol">Desi</span>gner;</a>
                 </div>
             </div>
 
             <div class="nav-center">
                 <div class="nav-item">
-                    <p><sup>(1)</sup> Projects,</p>
+                    <a href="projects.html"><sup>(1)</sup> Projects,</a>
 
                     <div class="bottom-line bottom-line3"></div>
                 </div>
                 <div class="nav-item">
-                    <p><sup>(2)</sup> About,</p>
+                    <a href="about.html"><sup>(2)</sup> About,</a>
 
                     <div class="bottom-line bottom-line3"></div>
                 </div>
                 <div class="nav-item">
-                    <p><sup>(3)</sup> Gallery,</p>
+                    <a href="gallery.html"><sup>(3)</sup> Gallery,</a>
 
                     <div class="bottom-line bottom-line3"></div>
                 </div>
             </div>
 
             <div class="nav-right">
-                <p>Get in Touch.</p>
+                <a href="contact.html">Get in Touch.</a>
 
                 <div class="bottom-line bottom-line1"></div>
                 <div class="bottom-line bottom-line2"></div>
@@ -281,7 +281,7 @@
 
 <div class="up-next">
     <div class="u-n-topic">
-        <p><span class="lol">Gri</span>d－(02);</p>
+        <a href="case2.html"><span class="lol">Gri</span>d－(02);</a>
 
         <div class="bottom-line bottom-line5"></div>
     </div>
@@ -390,12 +390,13 @@
             }
         });
     
-        document.addEventListener('click', (event) => {
-            if (clickDisabled) {
-                event.preventDefault(); 
-                event.stopPropagation();
-            }
-        });
+        document.addEventListener("click", (event) => {
+    if (clickDisabled && !event.target.closest("a")) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+});
+
     
         document.addEventListener('selectstart', (event) => {
             if (isDragging) {

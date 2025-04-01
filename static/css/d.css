@@ -84,11 +84,6 @@ html.lenis, html.lenis body {
     text-decoration: none;
   }
 
-  .box-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
 
   
   @keyframes bg-animation {
@@ -389,6 +384,7 @@ body {
   bottom: -0.5rem;
   height: 1px;
   background: var(--text);
+  pointer-events: none;
 }
 
 

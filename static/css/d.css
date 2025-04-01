@@ -2,7 +2,7 @@
     --bg: #dcdada;
     --text: #1b1b1b;
     --light-text: #f5f5f5;
-    --default-text: 1.7rem;
+    --default-text: 2rem;
 }
      
 @font-face {
@@ -535,6 +535,15 @@ body {
   position: relative;
 }
 
+.small-extra-text2{
+  height: 30rem;
+  width: 100vw;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
 .the-extra-text{
   position: absolute;
   right: 4rem;
@@ -883,7 +892,7 @@ input::placeholder {
 /* case.html */
 
 .page-top{
-  height: 48rem;
+  height: 54rem;
   width: 100vw;
   position: relative;
   display: flex;
@@ -892,14 +901,14 @@ input::placeholder {
 }
 
 .topic{
-  font-size: 17rem;
+  font-size: 15rem;
   position: absolute;
   left: 4rem;
-  bottom: 8rem;
+  bottom: 12rem;
 }
 
 .display{
-  height: 60rem;
+  height: 70rem;
   width: 100vw;
   position: relative;
   overflow: hidden;
@@ -909,7 +918,7 @@ input::placeholder {
   position: absolute;
   right: 4rem;
   height: 100%;
-  width: 90rem;
+  width: 100rem;
   background: #cfcfcf;
   border: 1px dashed #333;
   display: flex;
@@ -927,4 +936,74 @@ input::placeholder {
   right: 4rem;
   overflow: hidden;
   font-family: 'serif';
+}
+
+ 
+.break{
+  height: 24rem;
+  width: calc(100vw - 8rem);
+  margin-left: 4rem;
+  background: #cfcfcf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7rem;
+  border: 1px dashed #333;
+}
+
+.break p{
+  position: absolute;
+  left: calc(43rem + 4rem);
+}
+
+.exact-spacer{
+  height: 15rem;
+  position: relative;
+}
+
+.major-text{
+  height: 35rem;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  font-size: 7rem;
+  font-family: 'yass';
+  overflow: hidden;
+}
+
+
+.inside-major-text{
+  height: fit-content;
+  width: 100rem;
+  position: absolute;
+  right: 4rem;
+  top: 0;
+}
+
+.title-right{
+  height: 13rem;
+  width: 100vw;
+  position: relative;
+}
+
+.inside-title-right{
+  position: absolute;
+  left: calc(43rem + 4rem);
+  font-size: 7rem;
+}
+
+.brief{
+  height: 23rem;
+  width: 100vw;
+  position: relative;
+}
+
+.inside-brief{
+  position: absolute;
+  left: calc(43rem + 4rem);
+  width: 60rem;
+}
+
+.inside-brief p{
+  text-align: justify;
 }

@@ -11,7 +11,7 @@
 
 
 
-<div class="page-top-spacer">
+<div id="summary" class="page-top-spacer">
     <div class="nav">
         <div class="nav-left">
             <div class="nav-item">
@@ -50,23 +50,47 @@
 
 </div>
 
-<div class="continuation">
+<div class="minimap">
+    <div class="map-link" data-target="#summary">
+        <div class="stroke active-stroke"></div>
+        <div class="identifier">
+            <p>Summary,</p>
+        </div>
+    </div>
+    <div class="map-link" data-target="#principles">
+        <div class="stroke"></div>
+        <div class="identifier">
+            <p>Principles,</p>
+        </div>
+    </div>
+    <div class="map-link" data-target="#experience">
+        <div class="stroke"></div>
+        <div class="identifier">
+            <p>Experience & Socials.</p>
+        </div>
+    </div>
+</div>
+<div  class="continuation">
+
+
+
     <div class="continuation-text">
         <div class="c-1">
-            <p>I’m a designer driven by clarity and purpose, shaping digital experiences with precision and intent.</p>
+            <p>I’m a teenage designer and developer driven by <span class="lol">clarity</span> and <span class="lol">purpose</span>, shaping digital experiences with <span class="lol">precision</span> and <span class="lol">intent</span>.</p>
         </div>
         
         <div class="c-1">
-            <p>Every project is an exercise in refinement, ensuring form and function exist in perfect harmony.</p>
+            <p>Every project is an exercise in <span class="lol">refinement</span>, ensuring <span class="lol">form</span> and <span class="lol">function</span> exist in perfect <span class="lol">harmony</span>.</p>
         </div>
     </div>
+    
 </div>
 
 
 <div class="exact-spacer2"></div>
 
 
-<div class="a-random-image">
+<div id="principles" class="a-random-image">
     <div class="inside-a-random-image">
         <p><span class="lol">Prin</span>ciples;</p>
     </div>
@@ -144,12 +168,92 @@
 
 <div class="exact-spacer2"></div>
 
-<div class="title-right2">
+<div  id="experience" class="title-right2">
     <div class="inside-title-right2">
         <p><span class="lol">Experi</span>ence & <span class="lol">Aw</span>ards;</p>
 
     </div>
 </div> 
+
+<div class="what-was-done">
+<div class="wrapping-foil">
+    <div class="move-jhor the-job">
+        <p>Freelance <span class="lol">Desi</span>gner <br>& <span class="lol">Devel</span>oper</p>
+    </div>
+    <div class="move-jhor the-lenght">
+        <p>2024 － Present</p>
+    </div>
+</div>
+</div>
+
+<div class="what-was-done">
+    <div class="wrapping-foil">
+        <div class="move-jhor the-job">
+            <p>Lead <span class="lol">Desi</span>gner <br> <span class="lol">Zesti</span>que</p>
+        </div>
+        <div class="move-jhor the-lenght">
+            <p>2024 － 2025 </p>
+        </div>
+    </div>
+    </div>
+
+    <div class="what-was-done">
+        <div class="wrapping-foil">
+            <div class="move-jhor the-job">
+                <p>WD <span class="lol">Awa</span>rds <br> <span class="lol">Emer</span>gence</p>
+            </div>
+            <div class="move-jhor the-lenght">
+                <p>2024 － Favourite </p>
+            </div>
+        </div>
+        </div>
+
+
+        <div  class="exact-spacer2"></div>
+
+<div class="title-right2">
+    <div class="inside-title-right2">
+        <p><span class="lol">Soci</span>als;</p>
+    </div>
+
+
+</div> 
+
+
+<div class="get-in-contact-body">
+    <div class="get-in-contact">
+        <div class="item">
+            <a href="mailto:treasure32109@gmail.com">Email,</a>
+
+        </div>
+        <div class="item">
+            <a href="https://ng.linkedin.com/in/treasure-onwuchekwa-3925b22a0" target="_blank" rel="noopener noreferrer">LinkedIn,</a>
+        </div>
+        <div class="item">
+            <a href="https://www.instagram.com/zyren.yp/" target="_blank" rel="noopener noreferrer">Instagram,</a>
+        </div>
+        <div class="item">
+            <a href="https://contra.com/tocj_5c03tow4" target="_blank" rel="noopener noreferrer">Contra.</a>
+        </div>
+    </div>
+
+    <div class="back-to-top scroll-to-top about-top">
+        <div class="back-to-top-text">
+            <p>Back to Top</p>
+        </div>
+
+        <div class="back-to-top-arrow">
+            <p>↑</p>
+            <p class="third-arrow">↑</p>
+        </div>
+    </div>
+
+    <div class="date-of">
+        <p>Est. 2025</p>
+</div>
+</div>
+
+
 
     <div class="tint"></div>
 
@@ -161,144 +265,155 @@
     <script src="static/js/d.js"></script>
 
 
-    <script>
-        const lenis = new Lenis({
-            duration: 1,
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
-            smoothTouch: false,
-            touchMultiplier: 1,
-            infinite: false,
-        });
-    
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-    
-        requestAnimationFrame(raf);
-    
-        let isDragging = false;
-        let startY = 0;
-        let startScrollY = 0;
-        let targetScrollY = 0;
-        let lastScrollY = 0;
-        let velocity = 0;
-        let isAnimating = false;
-        let clickDisabled = false;
-        const friction = 0;
-        const dragSensitivity = 1.2;
-    
-        function clampScroll(scrollY) {
-            const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
-            return Math.max(0, Math.min(scrollY, maxScrollY));
-        }
-    
-        document.addEventListener('mousedown', (event) => {
-            isDragging = true;
-            startY = event.clientY;
-            startScrollY = lenis.scroll;
-            lastScrollY = startScrollY;
-        });
-    
-        document.addEventListener('mousemove', (event) => {
-            if (isDragging) {
-                const deltaY = (event.clientY - startY) * dragSensitivity;
-                targetScrollY = clampScroll(startScrollY - deltaY);
-                if (!isAnimating) {
-                    animateScroll();
-                }
-            }
-        });
-    
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            clickDisabled = true;
-    
-            setTimeout(() => {
-                clickDisabled = false;
-            }, 100);
-    
-            if (Math.abs(velocity) > 0.1) {
-                applyInertia();
-            }
-        });
-    
-        document.addEventListener("click", (event) => {
-    if (clickDisabled && !event.target.closest("a")) {
-        event.preventDefault();
-        event.stopPropagation();
-    }
-});
 
-    
-        document.addEventListener('selectstart', (event) => {
-            if (isDragging) {
-                event.preventDefault();
-            }
-        });
-    
-        document.addEventListener('keydown', (event) => {
-            const scrollAmount = 200; 
-            if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-                targetScrollY = clampScroll(lenis.scroll - scrollAmount);
+<script>
+    const lenis = new Lenis({
+        duration: 1,
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true,
+        smoothTouch: false,
+        touchMultiplier: 1,
+        infinite: false,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    let isDragging = false;
+    let startY = 0;
+    let startScrollY = 0;
+    let targetScrollY = 0;
+    let lastScrollY = 0;
+    let velocity = 0;
+    let isAnimating = false;
+    let clickDisabled = false;
+    const friction = 0;
+    const dragSensitivity = 1.2;
+
+    function clampScroll(scrollY) {
+        const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
+        return Math.max(0, Math.min(scrollY, maxScrollY));
+    }
+
+    document.addEventListener('mousedown', (event) => {
+        isDragging = true;
+        startY = event.clientY;
+        startScrollY = lenis.scroll;
+        lastScrollY = startScrollY;
+    });
+
+    document.addEventListener('mousemove', (event) => {
+        if (isDragging) {
+            const deltaY = (event.clientY - startY) * dragSensitivity;
+            targetScrollY = clampScroll(startScrollY - deltaY);
+            if (!isAnimating) {
                 animateScroll();
-            } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
-                targetScrollY = clampScroll(lenis.scroll + scrollAmount);
-                animateScroll();       
-            } else if (event.key === ' ') {
-                event.preventDefault(); 
-                targetScrollY = clampScroll(lenis.scroll + window.innerHeight);
-                animateScroll();
-            }
-        });
-    
-        function easeOutCubic(t) {
-            return 1 - Math.pow(1 - t, 3);
-        }
-    
-        function animateScroll() {
-            isAnimating = true;
-            const currentScrollY = lenis.scroll;
-            const distance = targetScrollY - currentScrollY;
-            const easing = easeOutCubic(Math.min(1, Math.abs(distance) / 100));
-            const newScrollY = currentScrollY + distance * easing;
-            lenis.scrollTo(newScrollY);
-    
-            if (Math.abs(targetScrollY - newScrollY) > 0.5) {
-                requestAnimationFrame(animateScroll);
-            } else {
-                isAnimating = false;
             }
         }
-    
-        function applyInertia() {
-            const inertia = (targetScrollY - lastScrollY) * 0.3;
-            function inertiaScroll() {
-                velocity *= friction;
-                const newScrollY = clampScroll(lenis.scroll + velocity);
-                if (Math.abs(velocity) > 0.1 && newScrollY !== 0 && newScrollY !== document.documentElement.scrollHeight - window.innerHeight) {
-                    lenis.scroll = newScrollY;
-                    requestAnimationFrame(inertiaScroll);
-                }
-            }
-            velocity = inertia;
-            inertiaScroll();
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        clickDisabled = true;
+
+        setTimeout(() => {
+            clickDisabled = false;
+        }, 100);
+
+        if (Math.abs(velocity) > 0.1) {
+            applyInertia();
         }
-    
+    });
+
+    document.addEventListener("click", (event) => {
+        if (clickDisabled && !event.target.closest("a")) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    });
+
+    document.addEventListener('selectstart', (event) => {
+        if (isDragging) {
+            event.preventDefault();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        const scrollAmount = 200; 
+        if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+            targetScrollY = clampScroll(lenis.scroll - scrollAmount);
+            animateScroll();
+        } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+            targetScrollY = clampScroll(lenis.scroll + scrollAmount);
+            animateScroll();       
+        } else if (event.key === ' ') {
+            event.preventDefault(); 
+            targetScrollY = clampScroll(lenis.scroll + window.innerHeight);
+            animateScroll();
+        }
+    });
+
+    function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+    }
+
+    function animateScroll() {
+        isAnimating = true;
+        const currentScrollY = lenis.scroll;
+        const distance = targetScrollY - currentScrollY;
+        const easing = easeOutCubic(Math.min(1, Math.abs(distance) / 100));
+        const newScrollY = currentScrollY + distance * easing;
+        lenis.scrollTo(newScrollY);
+
+        if (Math.abs(targetScrollY - newScrollY) > 0.5) {
+            requestAnimationFrame(animateScroll);
+        } else {
+            isAnimating = false;
+        }
+    }
+
+    function applyInertia() {
+        const inertia = (targetScrollY - lastScrollY) * 0.3;
+        function inertiaScroll() {
+            velocity *= friction;
+            const newScrollY = clampScroll(lenis.scroll + velocity);
+            if (Math.abs(velocity) > 0.1 && newScrollY !== 0 && newScrollY !== document.documentElement.scrollHeight - window.innerHeight) {
+                lenis.scroll = newScrollY;
+                requestAnimationFrame(inertiaScroll);
+            }
+        }
+        velocity = inertia;
+        inertiaScroll();
+    }
 
     document.querySelectorAll(".scroll-to-top").forEach(button => {
-    button.addEventListener("click", (e) => {
-        e.preventDefault();
-        lenis.scrollTo(0);
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+            lenis.scrollTo(0);
+        });
+    });
+
+document.querySelectorAll('.map-link').forEach(link => {
+    link.addEventListener('click', function () {
+        const targetId = this.getAttribute('data-target');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            const offset = 50;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+            
+            lenis.scrollTo(targetPosition);
+        }
     });
 });
 
-    
-        
-    </script>
+</script>
 
 
 
@@ -414,6 +529,43 @@
   </script>
 
 
-    
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('[id]');
+        const navLinks = document.querySelectorAll('.map-link .stroke');
+        
+        function activateStroke() {
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const offski = 200;
+                
+                if (window.scrollY >= (sectionTop - sectionHeight / 3 - offski)) {
+                    currentSection = section.id;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-stroke');
+            });
+            
+            const activeLink = document.querySelector(`.map-link[data-section="${currentSection}"] .stroke`);
+            if (activeLink) {
+                activeLink.classList.add('active-stroke');
+            }
+        }
+        
+        const mapLinks = document.querySelectorAll('.map-link');
+        mapLinks[0].setAttribute('data-section', 'summary');
+        mapLinks[1].setAttribute('data-section', 'principles');
+        mapLinks[2].setAttribute('data-section', 'experience');
+
+        activateStroke();
+        window.addEventListener('scroll', activateStroke);
+    });
+</script>
+
 </body>
 </html>

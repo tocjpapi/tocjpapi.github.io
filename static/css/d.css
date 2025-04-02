@@ -1043,6 +1043,15 @@ input::placeholder {
   position: relative;
 }
 
+.get-in-contact2{
+  position: absolute;
+  left: calc(43rem + 6rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
 .inside-brief{
   position: absolute;
   left: calc(43rem + 6rem);
@@ -1266,6 +1275,7 @@ input::placeholder {
   margin-top: -5rem;
   position: absolute;
   transition: all 1.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform-origin: center;
 }
 
 .animatetext{

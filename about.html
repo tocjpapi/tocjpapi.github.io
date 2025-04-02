@@ -447,7 +447,11 @@ document.querySelectorAll('.map-link').forEach(link => {
 <script>
     var pupilsHTMLCollection = document.getElementsByClassName("pupil");
     var pupilsArray = Array.from(pupilsHTMLCollection);
-  
+    var eyeElements = document.getElementsByClassName("eye");
+    
+    // Store all eye positions for scroll effect
+    var eyePositions = [];
+    
     var input = {
       mouseX: {
         start: 0,
@@ -458,75 +462,97 @@ document.querySelectorAll('.map-link').forEach(link => {
         start: 0,
         end: window.innerHeight,
         current: 0
+      },
+      scrollY: {
+        current: 0
       }
     };
-  
-    input.mouseX.range = input.mouseX.end - input.mouseX.start;
-    input.mouseY.range = input.mouseY.end - input.mouseY.start;
-  
+    
     var output = {
       x: {
-        start: -37,
-        end: 37,
+        start: -35,
+        end: 35,
         current: 0
       },
       y: {
-        start: -37,
-        end: 37, 
+        start: -35,
+        end: 35, 
         current: 0
+      },
+      scrollEffect: {
+        strength: 35 
       }
     };
-  
-    output.x.range = output.x.end - output.x.start;
-    output.y.range = output.y.end - output.y.start;
-  
-    var handleMouseMove = function (event) {
+    
+
+    function updateEyePositions() {
+      eyePositions = Array.from(eyeElements).map(eye => {
+        const rect = eye.getBoundingClientRect();
+        return {
+          top: rect.top + window.scrollY,
+          bottom: rect.bottom + window.scrollY,
+          height: rect.height
+        };
+      });
+    }
+    
+    var handleMouseMove = function(event) {
       input.mouseX.current = event.clientX;
-      input.mouseX.fraction =
-        (input.mouseX.current - input.mouseX.start) / input.mouseX.range;
-  
       input.mouseY.current = event.clientY;
-      input.mouseY.fraction =
-        (input.mouseY.current - input.mouseY.start) / input.mouseY.range;
-  
-      output.x.current = output.x.start + input.mouseX.fraction * output.x.range;
-      output.y.current = output.y.start + input.mouseY.fraction * output.y.range;
-  
-
-      output.x.current = Math.min(Math.max(output.x.current, -45), 55); 
-      output.y.current = Math.min(Math.max(output.y.current, -45), 55); 
-  
-
-      pupilsArray.forEach(function (pupil, k) {
-        pupil.style.transform =
-          "translate(" + output.x.current + "px, " + output.y.current + "px)";
+      
+      // Mouse position fraction (viewport relative)
+      const mouseXFrac = input.mouseX.current / window.innerWidth;
+      const mouseYFrac = input.mouseY.current / window.innerHeight;
+      
+      // Calculate base mouse movement
+      output.x.current = output.x.start + mouseXFrac * (output.x.end - output.x.start);
+      output.y.current = output.y.start + mouseYFrac * (output.y.end - output.y.start);
+      
+      // Apply scroll effect to each pupil individually
+      pupilsArray.forEach((pupil, index) => {
+        if(index < eyePositions.length) {
+          const eye = eyePositions[index];
+          const viewportCenter = window.scrollY + (window.innerHeight / 2);
+          const eyeCenter = eye.top + (eye.height / 2);
+          
+          // Calculate scroll effect (-1 when eye is above viewport, +1 when below)
+          let scrollEffect = (viewportCenter - eyeCenter) / (window.innerHeight / 2);
+          scrollEffect = Math.max(-1, Math.min(1, scrollEffect)); // Clamp between -1 and 1
+          
+          // Apply combined effect
+          const combinedY = output.y.current + (scrollEffect * output.scrollEffect.strength);
+          
+          pupil.style.transform = `translate(${output.x.current}px, ${combinedY}px)`;
+        }
       });
     };
-  
-    var resetPupilsPosition = function () {
-
-      pupilsArray.forEach(function (pupil, k) {
-        pupil.style.transform =
-          "translate(0px, 0px)"; 
-      });
+    
+    var handleScroll = function() {
+      input.scrollY.current = window.scrollY;
+      updateEyePositions();
+      // Trigger mouse move to update positions
+      if(input.mouseX.current) handleMouseMove({clientX: input.mouseX.current, clientY: input.mouseY.current});
     };
-  
-    var handleResize = function () {
+    
+    var handleResize = function() {
       input.mouseX.end = window.innerWidth;
-      input.mouseX.range = input.mouseX.end - input.mouseX.start;
-  
       input.mouseY.end = window.innerHeight;
-      input.mouseY.range = input.mouseY.end - input.mouseY.start;
+      updateEyePositions();
     };
-  
+    
+    // Initialize
+    updateEyePositions();
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
-  
-
-    pupilsArray.forEach(function (pupil) {
-      pupil.addEventListener("mouseleave", resetPupilsPosition);
+    
+    // Reset position when mouse leaves eye (optional)
+    pupilsArray.forEach(pupil => {
+      pupil.addEventListener("mouseleave", function() {
+        this.style.transform = "translate(0, 0)";
+      });
     });
-  </script>
+</script>
 
 
 <script>

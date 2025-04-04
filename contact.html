@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Onwuchekwa － Contact</title>
+    <link rel="shortcut icon" href="static/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="static/css/d.css">
+</head>
+<body>
+    <div class="contact-section">
+        <div class="left-hand-side">
+
+
+            <div class="nav">
+
+                <div class="nav-left">
+                    <div class="nav-item">
+                        <a href="javascript:history.back()"><span class="ll"><sup>(?)</sup> Return.</a>
+
+                        <div class="bottom-line bottom-line3"></div>
+                    </div>
+                </div>
+    
+
+            </div>
+
+            <div class="dashed-statement">
+                <div class="tiny-dash"></div>
+
+                <div class="noteworthy-word">
+                    <p>Quiet Beauty With Raw Materials.</p>
+                </div>
+            </div>
+
+            <div class="contact-block">
+                <div class="get-in-touch-word">
+                    <p><span class="lol">Ge</span>t in <span class="lol">Tou</span>ch;</p>
+                </div>
+
+
+                <div class="get-in-contact-body3">
+                    <div class="get-in-contact3">
+                        <div class="itm">
+                            <p>Email & Phone Inquiries;</p>
+                
+                        </div>
+
+                        <div class="item">
+                            <a href="mailto:treasure32109@gmail.com" target="_blank" rel="noopener noreferrer">webdesignlucien@gmail.com,</a>
+                        </div>
+
+
+                        <div class="item">
+                            <a href="tel:+2347036876967" class="contact-link">+(234) 703 687 6967.</a>
+                        </div>
+
+                    </div>
+                
+
+                </div>
+
+            </div>
+    
+        </div>
+
+
+
+        <div class="right-hand-side">
+            <div class="bg"></div>
+            <canvas class="cvs" data-img="static/images/Backgrounds/test-pfp.png"></canvas>
+        </div>
+
+
+
+    </div>
+
+    <div class="tint"></div>
+
+
+    <script>
+        const dpr = Math.max(window.devicePixelRatio || 1, 2);
+        let targetMousePos = [0, 0];
+        let currentMousePos = [0, 0];
+        let rippleActive = false;
+        let rippleIntensity = 0;
+        let rippleTime = 0;
+        let exitAnimationProgress = 0;
+        let exitStartPos = [0, 0];
+        let rippleDecaySpeed = 0.03; // Speed at which ripple fades out
+    
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+    
+        function resizeCanvas(cvs3d, ctx3d, img, tex) {
+            const newWidth = cvs3d.clientWidth * dpr;
+            const newHeight = cvs3d.clientHeight * dpr;
+    
+            if (cvs3d.width !== newWidth || cvs3d.height !== newHeight) {
+                cvs3d.width = newWidth;
+                cvs3d.height = newHeight;
+                ctx3d.viewport(0, 0, cvs3d.width, cvs3d.height);
+                drawImage(ctx3d, img, cvs3d.width, cvs3d.height, tex);
+            }
+        }
+    
+        function drawImage(ctx3d, img, canvasWidth, canvasHeight, tex) {
+            if (!img.complete) return;
+    
+            const imgAspectRatio = img.width / img.height;
+            const canvasAspectRatio = canvasWidth / canvasHeight;
+    
+            let scaleX, scaleY, offsetX, offsetY;
+    
+            if (canvasAspectRatio > imgAspectRatio) {
+                scaleX = 1;
+                scaleY = imgAspectRatio / canvasAspectRatio;
+                offsetX = 0;
+                offsetY = (1 - scaleY) / 2;
+            } else {
+                scaleX = canvasAspectRatio / imgAspectRatio;
+                scaleY = 1;
+                offsetX = (1 - scaleX) / 2;
+                offsetY = 0;
+            }
+    
+            const texCoords = new Float32Array([
+                offsetX, offsetY,
+                offsetX, offsetY + scaleY,
+                offsetX + scaleX, offsetY + scaleY,
+                offsetX + scaleX, offsetY
+            ]);
+    
+            ctx3d.bindBuffer(ctx3d.ARRAY_BUFFER, ctx3d.createBuffer());
+            ctx3d.bufferData(ctx3d.ARRAY_BUFFER, new Float32Array([
+                -1, 1,  -1, -1,  1, -1,  1, 1
+            ]), ctx3d.STATIC_DRAW);
+            ctx3d.vertexAttribPointer(ctx3d.getAttribLocation(ctx3d.program, "aVertex"), 2, ctx3d.FLOAT, false, 0, 0);
+            ctx3d.enableVertexAttribArray(ctx3d.getAttribLocation(ctx3d.program, "aVertex"));
+    
+            ctx3d.bindBuffer(ctx3d.ARRAY_BUFFER, ctx3d.createBuffer());
+            ctx3d.bufferData(ctx3d.ARRAY_BUFFER, texCoords, ctx3d.STATIC_DRAW);
+            ctx3d.vertexAttribPointer(ctx3d.getAttribLocation(ctx3d.program, "aUV"), 2, ctx3d.FLOAT, false, 0, 0);
+            ctx3d.enableVertexAttribArray(ctx3d.getAttribLocation(ctx3d.program, "aUV"));
+    
+            ctx3d.uniform2f(ctx3d.getUniformLocation(ctx3d.program, "uResolution"), canvasWidth, canvasHeight);
+            ctx3d.uniform2f(ctx3d.getUniformLocation(ctx3d.program, "uMouse"), currentMousePos[0], currentMousePos[1]);
+            ctx3d.uniform2f(ctx3d.getUniformLocation(ctx3d.program, "uExitStart"), exitStartPos[0], exitStartPos[1]);
+            ctx3d.uniform1f(ctx3d.getUniformLocation(ctx3d.program, "uTime"), rippleTime);
+            ctx3d.uniform1f(ctx3d.getUniformLocation(ctx3d.program, "uIntensity"), rippleIntensity);
+            ctx3d.uniform1f(ctx3d.getUniformLocation(ctx3d.program, "uExitProgress"), exitAnimationProgress);
+    
+            ctx3d.clear(ctx3d.COLOR_BUFFER_BIT);
+            ctx3d.bindTexture(ctx3d.TEXTURE_2D, tex);
+            ctx3d.drawArrays(ctx3d.TRIANGLE_FAN, 0, 4);
+        }
+    
+        function createShader(ctx3d, type, source) {
+            const shader = ctx3d.createShader(type);
+            ctx3d.shaderSource(shader, source);
+            ctx3d.compileShader(shader);
+            return shader;
+        }
+    
+        function initializeCanvas(cvs3d) {
+            const ctx3d = cvs3d.getContext('webgl', { preserveDrawingBuffer: true });
+            const img = new Image();
+            img.src = cvs3d.getAttribute('data-img');
+    
+            const vertexShaderSrc = `
+                attribute vec2 aVertex;
+                attribute vec2 aUV;
+                varying vec2 vTex;
+                void main(void) {
+                    gl_Position = vec4(aVertex, 0.0, 1.0);
+                    vTex = aUV;
+                }
+            `;
+            const fragmentShaderSrc = `
+                precision highp float;
+                varying vec2 vTex;
+                uniform sampler2D sampler0;
+                uniform vec2 uResolution;
+                uniform vec2 uMouse;
+                uniform vec2 uExitStart;
+                uniform float uTime;
+                uniform float uIntensity;
+                uniform float uExitProgress;
+                
+                void main(void) {
+                    vec2 uv = vTex;
+                    vec4 color = texture2D(sampler0, uv);
+                    
+                    if (uIntensity > 0.0 || uExitProgress > 0.0) {
+                        vec2 effectCenter = mix(uMouse, uExitStart, uExitProgress);
+                        float effectIntensity = uIntensity * (1.0 - uExitProgress); // Combine both factors
+                        
+                        vec2 mousePos = effectCenter / uResolution;
+                        float dist = distance(uv, mousePos);
+                        
+                        float scaleProgress = effectIntensity;
+                        float baseRadius = 0.3;
+                        float currentRadius = baseRadius * scaleProgress;
+                        float edgeSmoothness = 0.05;
+                        
+                        if (uExitProgress < 1.0) {
+                            float ripple = sin(dist * 2000.0 - uTime * 1.0) * 0.015 * exp(-dist * 4.0);
+                            uv += ripple * effectIntensity;
+                            color = texture2D(sampler0, uv);
+                        }
+                        
+                        // Smooth circle edge with fixed smoothness regardless of scale
+                        float circle = smoothstep(currentRadius + edgeSmoothness, currentRadius - edgeSmoothness, dist);
+                        
+                        if (circle > 0.0) {
+                            vec3 inverted = vec3(1.0) - color.rgb;
+                            color.rgb = mix(color.rgb, inverted, circle * effectIntensity);
+                        }
+                        
+                        if (uExitProgress < 1.0) {
+                            vec2 dir = normalize(uv - mousePos);
+                            float caStrength = smoothstep(0.0, 0.2, exp(-dist * 6.0)) * 0.002 * effectIntensity;
+                            color.r = texture2D(sampler0, uv + dir * caStrength * 1.2).r;
+                            color.b = texture2D(sampler0, uv - dir * caStrength * 0.8).b;
+                        }
+                        
+                        float contrast = 1.0 + 0.2 * smoothstep(0.0, 0.3, exp(-dist * 6.0)) * effectIntensity;
+                        color.rgb = (color.rgb - 0.5) * contrast + 0.5;
+                    }
+                    
+                    gl_FragColor = color;
+                }
+            `;
+    
+            const vertShader = createShader(ctx3d, ctx3d.VERTEX_SHADER, vertexShaderSrc);
+            const fragShader = createShader(ctx3d, ctx3d.FRAGMENT_SHADER, fragmentShaderSrc);
+    
+            const program = ctx3d.createProgram();
+            ctx3d.attachShader(program, vertShader);
+            ctx3d.attachShader(program, fragShader);
+            ctx3d.linkProgram(program);
+            ctx3d.useProgram(program);
+            ctx3d.program = program;
+    
+            const tex = ctx3d.createTexture();
+            ctx3d.bindTexture(ctx3d.TEXTURE_2D, tex);
+            ctx3d.texParameteri(ctx3d.TEXTURE_2D, ctx3d.TEXTURE_WRAP_S, ctx3d.CLAMP_TO_EDGE);
+            ctx3d.texParameteri(ctx3d.TEXTURE_2D, ctx3d.TEXTURE_WRAP_T, ctx3d.CLAMP_TO_EDGE);
+            ctx3d.texParameteri(ctx3d.TEXTURE_2D, ctx3d.TEXTURE_MIN_FILTER, ctx3d.LINEAR);
+            ctx3d.texParameteri(ctx3d.TEXTURE_2D, ctx3d.TEXTURE_MAG_FILTER, ctx3d.LINEAR);
+            
+            img.onload = () => {
+                ctx3d.texImage2D(ctx3d.TEXTURE_2D, 0, ctx3d.RGBA, ctx3d.RGBA, ctx3d.UNSIGNED_BYTE, img);
+                resizeCanvas(cvs3d, ctx3d, img, tex);
+                
+                function animate() {
+                    currentMousePos[0] += (targetMousePos[0] - currentMousePos[0]) * 0.08;
+                    currentMousePos[1] += (targetMousePos[1] - currentMousePos[1]) * 0.08;
+                    
+                    rippleTime += 0.016;
+                    
+                    if (rippleActive) {
+                        rippleIntensity = Math.min(rippleIntensity + 0.1, 1.0);
+                        exitAnimationProgress = 0.0;
+                    } else if (rippleIntensity > 0) {
+                        // Smoothly reduce ripple intensity when mouse leaves
+                        rippleIntensity = Math.max(rippleIntensity - rippleDecaySpeed, 0);
+                        
+                        // Only start exit animation when ripple is almost gone
+                        if (rippleIntensity < 0.1) {
+                            exitAnimationProgress = Math.min(exitAnimationProgress + 0.04, 1.0);
+                            if (exitAnimationProgress >= 1.0) {
+                                rippleIntensity = 0;
+                                exitAnimationProgress = 0;
+                            }
+                        }
+                    }
+                    
+                    drawImage(ctx3d, img, cvs3d.width, cvs3d.height, tex);
+                    requestAnimationFrame(animate);
+                }
+                animate();
+            };
+    
+            cvs3d.addEventListener('mousemove', (e) => {
+                const rect = cvs3d.getBoundingClientRect();
+                targetMousePos = [
+                    (e.clientX - rect.left) * dpr,
+                    (e.clientY - rect.top) * dpr
+                ];
+                rippleActive = true;
+            });
+    
+            cvs3d.addEventListener('mouseleave', (e) => {
+                const rect = cvs3d.getBoundingClientRect();
+                exitStartPos = [
+                    (e.clientX - rect.left) * dpr,
+                    (e.clientY - rect.top) * dpr
+                ];
+                rippleActive = false;
+            });
+    
+            const debouncedResize = debounce(() => {
+                requestAnimationFrame(() => resizeCanvas(cvs3d, ctx3d, img, tex));
+            }, 250);
+            window.addEventListener('resize', debouncedResize);
+    
+            const observer = new ResizeObserver(entries => {
+                for (let entry of entries) {
+                    if (entry.target === cvs3d) {
+                        requestAnimationFrame(() => resizeCanvas(entry.target, ctx3d, img, tex));
+                    }
+                }
+            });
+            observer.observe(cvs3d);
+        }
+    
+        document.querySelectorAll('.cvs').forEach(cvs => initializeCanvas(cvs));
+    </script>
+</body>
+</html>

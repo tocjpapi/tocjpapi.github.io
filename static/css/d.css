@@ -1566,5 +1566,16 @@ input::placeholder {
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+
+}
+
+.great-text{
+  font-size: 15rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.great-text p{
+  text-wrap: nowrap;
 }

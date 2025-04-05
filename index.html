@@ -91,7 +91,8 @@
 
             <div class="contra-action">
                 <div class="contr-hire-text">
-                    <a href="https://contra.com/tocj_5c03tow4" target="_blank">Hire On Contra</a>
+                    <a  href="https://contra.com/tocj_5c03tow4" target="_blank" class="seo-anchor">Visit Page</a>
+                    <p>Hire On Contra</p>
                 </div>
                 <div class="contra-arrow">
                     <p>→</p>
@@ -122,7 +123,8 @@
 <div class="second-version">
     <div class="contra-action two fade-in">
         <div class="contr-hire-text">
-            <a href="projects.html">Show All Work</a>
+            <a  href="projects.html" class="seo-anchor">Visit Page</a>
+            <p>Show All Work</p>
         </div>
         <div class="contra-arrow">
             <p>→</p>
@@ -232,42 +234,44 @@
                 <div class="whats-used">
                 <div class="tiny-dash"></div>
                 <div class="word">
-                    <p>Web Design & Development</p>
+                    <p>Web Prototyping & Motion</p>
                 </div>
                 </div>
     
                 <div class="box-inner grayscale">
-                    <img src="static/images/Elanique/Landing Page.png" alt="" srcset="">
+                    <img src="static/images/Nike Aura/Nike Aura 2024.png" alt="" srcset="">
     
                 </div>
     
-                <a href="case3.html" class="seo-anchor">Visit Page</a>
+                <a href="case4.html" class="seo-anchor">Visit Page</a>
             </div>
         </div>
     
         <div class="box-description">
             <div class="desc-at-left">
-                <p><span class="lol">Elani</span>que;</p>
+                <p><span class="lol">Nik</span>e Aura;</p>
             </div>
     
             <div class="desc-at-middle">
-                <p>A website for a design agency. Featuring seamless animations that move with intent, animations that are precise, and beautifully crafted.Every interaction considered, every transition meaningful. ‘Elanique’ is a digital experience that feels as refined as the fictional agency it represents.</p>
+                <p> This is a deeply considered exploration of mine, where I sought to answer the question. What if ‘Nike’ made a website for all their photography? That was the main source for this project. I decided to blend and ‘blend’ in a very literal sense, a considerable amout of ideas based on Nike’s methods. Which can very often be rather unconventional.</p>
             </div>
     
             <div class="desc-at-right">
-                <p>(03).</p>
+                <p>(04).</p>
             </div>
         </div>
     
         <div class="box-spacer"></div>
 
 
-        <div class="parallaxy">
+
+
+        <!-- <div class="parallaxy">
             <img draggable="false" src="static/images/Backgrounds/second.jpg" alt="">
             <div class="bg"></div>
             <div class="boxy">
                 <div class="intro">
-                    <p><span>c</span>ontact</p>
+                    <p><span class="lol">Dial</span>ogue</p>
                 </div>
 
                 <div class="contact-stuff">
@@ -279,8 +283,12 @@
 
 
             </div>
-        </div>
+        </div> -->
 
+
+        <div class="break">
+            <p><span class="lol">Foot</span>er Section;</p>
+        </div>
 
         <div class="bottom-footer">
 
@@ -399,194 +407,11 @@
    
    
    
-    <script>
-        const lenis = new Lenis({
-            duration: 1,
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
-            smoothTouch: false,
-            touchMultiplier: 1,
-            infinite: false,
-        });
-    
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-    
-        requestAnimationFrame(raf);
-    
-        let isDragging = false;
-        let startY = 0;
-        let startScrollY = 0;
-        let targetScrollY = 0;
-        let lastScrollY = 0;
-        let velocity = 0;
-        let isAnimating = false;
-        let clickDisabled = false;
-        const friction = 0;
-        const dragSensitivity = 1.2;
-    
-        function clampScroll(scrollY) {
-            const maxScrollY = document.documentElement.scrollHeight - window.innerHeight;
-            return Math.max(0, Math.min(scrollY, maxScrollY));
-        }
-    
-        document.addEventListener('mousedown', (event) => {
-            isDragging = true;
-            startY = event.clientY;
-            startScrollY = lenis.scroll;
-            lastScrollY = startScrollY;
-        });
-    
-        document.addEventListener('mousemove', (event) => {
-            if (isDragging) {
-                const deltaY = (event.clientY - startY) * dragSensitivity;
-                targetScrollY = clampScroll(startScrollY - deltaY);
-                if (!isAnimating) {
-                    animateScroll();
-                }
-            }
-        });
-    
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            clickDisabled = true;
-    
-            setTimeout(() => {
-                clickDisabled = false;
-            }, 100);
-    
-            if (Math.abs(velocity) > 0.1) {
-                applyInertia();
-            }
-        });
-    
-        document.addEventListener("click", (event) => {
-    if (clickDisabled && !event.target.closest("a")) {
-        event.preventDefault();
-        event.stopPropagation();
-    }
-});
 
-    
-        document.addEventListener('selectstart', (event) => {
-            if (isDragging) {
-                event.preventDefault();
-            }
-        });
-    
-        document.addEventListener('keydown', (event) => {
-            const scrollAmount = 200; 
-            if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-                targetScrollY = clampScroll(lenis.scroll - scrollAmount);
-                animateScroll();
-            } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
-                targetScrollY = clampScroll(lenis.scroll + scrollAmount);
-                animateScroll();       
-            } else if (event.key === ' ') {
-                event.preventDefault(); 
-                targetScrollY = clampScroll(lenis.scroll + window.innerHeight);
-                animateScroll();
-            }
-        });
-    
-        function easeOutCubic(t) {
-            return 1 - Math.pow(1 - t, 3);
-        }
-    
-        function animateScroll() {
-            isAnimating = true;
-            const currentScrollY = lenis.scroll;
-            const distance = targetScrollY - currentScrollY;
-            const easing = easeOutCubic(Math.min(1, Math.abs(distance) / 100));
-            const newScrollY = currentScrollY + distance * easing;
-            lenis.scrollTo(newScrollY);
-    
-            if (Math.abs(targetScrollY - newScrollY) > 0.5) {
-                requestAnimationFrame(animateScroll);
-            } else {
-                isAnimating = false;
-            }
-        }
-    
-        function applyInertia() {
-            const inertia = (targetScrollY - lastScrollY) * 0.3;
-            function inertiaScroll() {
-                velocity *= friction;
-                const newScrollY = clampScroll(lenis.scroll + velocity);
-                if (Math.abs(velocity) > 0.1 && newScrollY !== 0 && newScrollY !== document.documentElement.scrollHeight - window.innerHeight) {
-                    lenis.scroll = newScrollY;
-                    requestAnimationFrame(inertiaScroll);
-                }
-            }
-            velocity = inertia;
-            inertiaScroll();
-        }
-    
-
-    document.querySelectorAll(".scroll-to-top").forEach(button => {
-    button.addEventListener("click", (e) => {
-        e.preventDefault();
-        lenis.scrollTo(0);
-    });
-});
-
-    
-        
-    </script>
 
 
     
-<script>
-    gsap.registerPlugin(ScrollTrigger);
-    
-    gsap.to(".first", {
-      yPercent: 300,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".first",
-        start: "bottom bottom",
-        end: "+=10000",
-        scrub: true,
-      }
-    });
-    
-    gsap.to(".turn-dark", {
-      opacity: 0.4,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".first",
-        start: "bottom bottom",
-        end: "bottom top",
-        scrub: true,
-      }
-    });
-    
-    </script>
 
-
-<script>
-    gsap.registerPlugin(ScrollTrigger);
-
-
-document.querySelectorAll('.parallaxy').forEach((img, index) => {
-
-gsap.to(img.querySelector("img"), {
-    yPercent: 190,
-    ease: "none",
-    scrollTrigger: {
-    trigger: img,
-    start: "top bottom",
-    end: "+=10000",
-    scrub: true,
-    }
-});
-});
-
-</script>
 
 
 

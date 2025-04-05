@@ -644,6 +644,12 @@ body {
 }
 
 
+.is-safari .up-next-inner img {
+  width: 15.3rem;
+}
+
+
+
 .box-inner video {
 
   height: 35rem;

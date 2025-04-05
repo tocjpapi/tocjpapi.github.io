@@ -581,3 +581,12 @@ if (parallaxyElements.length > 0) {
             console.warn("Missing required elements for navigation highlighting");
         }
     });
+
+
+//safari-respond
+
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+if (isSafari) {
+  document.documentElement.classList.add('is-safari');
+}

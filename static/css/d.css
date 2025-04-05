@@ -626,6 +626,24 @@ body {
 }
 
 
+.is-safari .box-inner img {
+  height: 35rem;
+  width: 60rem;
+}
+
+.is-safari .box-inner2 img {
+  width: 43rem;
+}
+
+.is-safari .box-inner3 img {
+  width: 34rem;
+}
+
+.is-safari .box-inner4 img {
+  width: 51.5rem;
+}
+
+
 .box-inner video {
 
   height: 35rem;

@@ -1513,12 +1513,12 @@ input::placeholder {
 
 .right-hand-side{
   position: absolute;
-  right: 0;
-  height: 100%;
+  right: 4rem;
+  height: calc(100% - 8rem);
   width: 70rem;
-  background: var(--text);
   filter: grayscale();
   overflow:hidden;
+  border: 0.1rem dashed #333;
 }
 
 .cvs {

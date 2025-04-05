@@ -1335,7 +1335,7 @@ input::placeholder {
 
 .wrapping-foil{
   position: absolute;
-  left: 65rem;
+  left: 67rem;
   display: flex;
   flex-direction: column;
   gap: 1.7rem;
@@ -1353,7 +1353,7 @@ input::placeholder {
 
 .get-in-contact{
   position: absolute;
-  left: 65rem;
+  left: 67rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;

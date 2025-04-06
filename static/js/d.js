@@ -607,10 +607,11 @@ if (parallaxyElements.length > 0) {
 
 //safari-respond
 
-// Updated Safari/iOS detection
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) || 
                  /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 if (isSafari) {
   document.documentElement.classList.add('is-safari');
 }
+
+

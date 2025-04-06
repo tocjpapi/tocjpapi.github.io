@@ -23,7 +23,6 @@ let targetScrollY = 0;
 let lastScrollY = 0;
 let velocity = 0;
 let isAnimating = false;
-let clickDisabled = false;
 const friction = 0;
 const dragSensitivity = 1.2;
 
@@ -33,61 +32,75 @@ function clampScroll(scrollY) {
 }
 
 document.addEventListener('mousedown', (event) => {
+  // Only listen to left mouse button (button 0)
+  if (event.button !== 0) return;
+  
   isDragging = true;
   startY = event.clientY;
   startScrollY = lenis.scroll;
   lastScrollY = startScrollY;
+  
+  // Add class to indicate active dragging
+  document.body.classList.add('is-actively-dragging');
 });
 
 document.addEventListener('mousemove', (event) => {
   if (isDragging) {
-      const deltaY = (event.clientY - startY) * dragSensitivity;
-      targetScrollY = clampScroll(startScrollY - deltaY);
-      if (!isAnimating) {
-          animateScroll();
-      }
+    const deltaY = (event.clientY - startY) * dragSensitivity;
+    targetScrollY = clampScroll(startScrollY - deltaY);
+    if (!isAnimating) {
+      animateScroll();
+    }
   }
 });
 
 document.addEventListener('mouseup', () => {
+  if (!isDragging) return;
+  
   isDragging = false;
-  clickDisabled = true;
-
-  setTimeout(() => {
-      clickDisabled = false;
-  }, 100);
+  // Remove active dragging class immediately
+  document.body.classList.remove('is-actively-dragging');
 
   if (Math.abs(velocity) > 0.1) {
-      applyInertia();
+    applyInertia();
   }
 });
 
-document.addEventListener("click", (event) => {
-if (clickDisabled && !event.target.closest("a")) {
-event.preventDefault();
-event.stopPropagation();
-}
-});
-
+// Prevent link clicks ONLY during active mouse dragging
+document.addEventListener('click', (event) => {
+  if (isDragging && event.target.closest('a')) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+}, true); // Use capture phase for better reliability
 
 document.addEventListener('selectstart', (event) => {
   if (isDragging) {
-      event.preventDefault();
+    event.preventDefault();
   }
 });
 
+document.addEventListener('contextmenu', (event) => {
+  // Reset dragging state if context menu appears
+  if (isDragging) {
+    isDragging = false;
+    document.body.classList.remove('is-actively-dragging');
+  }
+});
+
+// Rest of your existing code (keydown, animateScroll, applyInertia, etc.) remains the same
 document.addEventListener('keydown', (event) => {
   const scrollAmount = 200; 
   if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
-      targetScrollY = clampScroll(lenis.scroll - scrollAmount);
-      animateScroll();
+    targetScrollY = clampScroll(lenis.scroll - scrollAmount);
+    animateScroll();
   } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
-      targetScrollY = clampScroll(lenis.scroll + scrollAmount);
-      animateScroll();       
+    targetScrollY = clampScroll(lenis.scroll + scrollAmount);
+    animateScroll();       
   } else if (event.key === ' ') {
-      event.preventDefault(); 
-      targetScrollY = clampScroll(lenis.scroll + window.innerHeight);
-      animateScroll();
+    event.preventDefault(); 
+    targetScrollY = clampScroll(lenis.scroll + window.innerHeight);
+    animateScroll();
   }
 });
 
@@ -104,83 +117,92 @@ function animateScroll() {
   lenis.scrollTo(newScrollY);
 
   if (Math.abs(targetScrollY - newScrollY) > 0.5) {
-      requestAnimationFrame(animateScroll);
+    requestAnimationFrame(animateScroll);
   } else {
-      isAnimating = false;
+    isAnimating = false;
   }
 }
 
 function applyInertia() {
   const inertia = (targetScrollY - lastScrollY) * 0.3;
   function inertiaScroll() {
-      velocity *= friction;
-      const newScrollY = clampScroll(lenis.scroll + velocity);
-      if (Math.abs(velocity) > 0.1 && newScrollY !== 0 && newScrollY !== document.documentElement.scrollHeight - window.innerHeight) {
-          lenis.scroll = newScrollY;
-          requestAnimationFrame(inertiaScroll);
-      }
+    velocity *= friction;
+    const newScrollY = clampScroll(lenis.scroll + velocity);
+    if (Math.abs(velocity) > 0.1 && newScrollY !== 0 && newScrollY !== document.documentElement.scrollHeight - window.innerHeight) {
+      lenis.scroll = newScrollY;
+      requestAnimationFrame(inertiaScroll);
+    }
   }
   velocity = inertia;
   inertiaScroll();
 }
 
-
 document.querySelectorAll(".scroll-to-top").forEach(button => {
   button.addEventListener("click", (e) => {
-      e.preventDefault();
-      lenis.scrollTo(0);
+    e.preventDefault();
+    lenis.scrollTo(0);
   });
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Check if Lenis is initialized and map links exist
   if (typeof lenis !== 'undefined' && lenis) {
-      const mapLinks = document.querySelectorAll('.map-link');
-      
-      if (mapLinks.length > 0) {
-          mapLinks.forEach(link => {
-              link.addEventListener('click', function(e) {
-                  e.preventDefault(); // Prevent default anchor behavior
-                  
-                  const targetId = this.getAttribute('data-target');
-                  if (!targetId) return; // Exit if no data-target
-                  
-                  const targetElement = document.querySelector(targetId);
-                  if (!targetElement) return; // Exit if target doesn't exist
-                  
-                  // Smooth scroll with Lenis
-                  try {
-                      const offset = 50;
-                      const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
-                      
-                      if (typeof lenis.scrollTo === 'function') {
-                          lenis.scrollTo(targetPosition);
-                      }
-                  } catch (error) {
-                      console.error('Lenis scroll error:', error);
-                      // Fallback to native smooth scroll
-                      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-              });
-          });
-      } else {
-          console.warn('No .map-link elements found');
-      }
-  } else {
-      console.warn('Lenis scroll not available - falling back to native scroll');
-
-      document.querySelectorAll('.map-link').forEach(link => {
-          link.addEventListener('click', function(e) {
-              e.preventDefault();
-              const targetId = this.getAttribute('data-target');
-              if (targetId) {
-                  const target = document.querySelector(targetId);
-                  if (target) target.scrollIntoView({ behavior: 'smooth' });
-              }
-          });
+    const mapLinks = document.querySelectorAll('.map-link');
+    
+    if (mapLinks.length > 0) {
+      mapLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Only prevent if actively dragging
+          if (isDragging) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+          }
+          
+          e.preventDefault();
+          const targetId = this.getAttribute('data-target');
+          if (!targetId) return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (!targetElement) return;
+          
+          try {
+            const offset = 50;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+            
+            if (typeof lenis.scrollTo === 'function') {
+              lenis.scrollTo(targetPosition);
+            }
+          } catch (error) {
+            console.error('Lenis scroll error:', error);
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
       });
+    }
+  } else {
+    document.querySelectorAll('.map-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Only prevent if actively dragging
+        if (isDragging) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+        
+        e.preventDefault();
+        const targetId = this.getAttribute('data-target');
+        if (targetId) {
+          const target = document.querySelector(targetId);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
   }
 });
+
+
+
+
 
 // end of lenis
 

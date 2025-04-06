@@ -201,32 +201,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-
-
-// end of lenis
-
-// default stuff
-
-document.querySelectorAll('a').forEach(link => {
-    link.setAttribute('draggable', 'false');
-  });
-
-
-  document.querySelectorAll('img').forEach(img => {
-    img.setAttribute('draggable', 'false');
-  });
-
-
-  document.addEventListener('contextmenu', function(e) {
-    if (e.target.tagName === 'CANVAS' || e.target.tagName === 'IMG') {
-      e.preventDefault();
-    }
-  });
-
-
-  //index-html-parallax
-
 gsap.registerPlugin(ScrollTrigger);
 
 // Check if '.first' exists before animating
@@ -260,28 +234,34 @@ if (turnDarkElement) {
 }
 
 
-//index-html-parallax img
 
-gsap.registerPlugin(ScrollTrigger);
 
-const parallaxyElements = document.querySelectorAll('.parallaxy');
-if (parallaxyElements.length > 0) {
-  parallaxyElements.forEach((img) => {
-    const imgChild = img.querySelector("img");
-    if (imgChild) {
-      gsap.to(imgChild, {
-        yPercent: 190,
-        ease: "none",
-        scrollTrigger: {
-          trigger: img,
-          start: "top bottom",
-          end: "+=10000",
-          scrub: true,
-        },
-      });
+
+
+
+
+// end of lenis
+
+// default stuff
+
+document.querySelectorAll('a').forEach(link => {
+    link.setAttribute('draggable', 'false');
+  });
+
+
+  document.querySelectorAll('img').forEach(img => {
+    img.setAttribute('draggable', 'false');
+  });
+
+
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'CANVAS' || e.target.tagName === 'IMG') {
+      e.preventDefault();
     }
   });
-}
+
+
+  //index-html-parallax
 
 
 

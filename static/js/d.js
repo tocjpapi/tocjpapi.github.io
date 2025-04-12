@@ -594,4 +594,70 @@ if (isSafari) {
   document.documentElement.classList.add('is-safari');
 }
 
+//nav2
+document.addEventListener('DOMContentLoaded', () => {
+  const navElement = document.querySelector('.nav');
+  const menuMove = document.querySelector('.menu .menu-move');
+  const menuBoss = document.querySelector('.menu-boss');
+  
+  if (!navElement || !menuMove || !menuBoss) return;
 
+  const duration = 1500;
+  const easing = t => 1 - (--t) * t * t * t;
+
+  let startY, targetY;
+  let currentY = -150;
+  let startTime = null;
+  let isAnimating = false;
+
+  menuMove.style.transform = `translateY(${currentY}%)`;
+  menuMove.style.pointerEvents = 'none';
+  menuBoss.style.pointerEvents = 'none';
+
+  const observer = new IntersectionObserver((entries) => {
+    if (!entries[0].isIntersecting) {
+      startY = 150;
+      targetY = 0;
+    } else {
+      startY = 0;
+      targetY = -150;
+    }
+    animateTo(startY, targetY);
+  }, { threshold: 0.1 });
+
+  observer.observe(navElement);
+
+  function animateTo(start, target) {
+    if (currentY === target) return;
+    startY = start;
+    targetY = target;
+    startTime = null;
+    if (!isAnimating) {
+      isAnimating = true;
+      requestAnimationFrame(step);
+    }
+  }
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = easing(progress);
+
+    currentY = startY + (targetY - startY) * easedProgress;
+    menuMove.style.transform = `translateY(${currentY}%)`;
+
+    if (progress === 1) {
+      const isVisible = targetY === 0;
+      menuMove.style.pointerEvents = isVisible ? 'all' : 'none';
+      menuBoss.style.pointerEvents = isVisible ? 'all' : 'none';
+      isAnimating = false;
+    } else {
+      // Update pointer events during animation based on current position
+      const isCurrentlyVisible = Math.abs(currentY) < 1; // Approximately at 0%
+      menuMove.style.pointerEvents = isCurrentlyVisible ? 'all' : 'none';
+      menuBoss.style.pointerEvents = isCurrentlyVisible ? 'all' : 'none';
+      requestAnimationFrame(step);
+    }
+  }
+});

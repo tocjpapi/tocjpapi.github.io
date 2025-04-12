@@ -242,6 +242,38 @@ body {
     justify-content: center;
   }
 
+  .nav2{
+    position: fixed;
+    top: 5rem;
+    width: 10rem;
+    margin-left: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+
+  .menu{
+    overflow: hidden;
+  }
+  
+  
+  
+  .menu .menu-move{
+    transform: translateY(120%);
+  
+  }
+
+
+.nav-left:hover .bottom-line3 {
+  transform: scaleX(1);
+}
+
+.nav-left:not(:hover) .bottom-line3 {
+  transform-origin: right;
+}
+
+
   .nav-item{
     position: relative;
     cursor: pointer;

@@ -1647,11 +1647,11 @@ input::placeholder {
   text-wrap: nowrap;
 }
 
-@media (hover:hover){
-  .mobile{
-    display: none;
-  }
+.mobile{
+  display: none;
 }
+
+
 
 /* mobile styles */
 
@@ -1905,6 +1905,13 @@ input::placeholder {
   font-size: 15rem;
 }
 
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .mobile{
+    display: none;
+ 
+  }
+}
 
 
 @media (max-width: 900px) and (orientation: portrait) {

@@ -1,10 +1,10 @@
 :root{
-    --bg: #dcdada;
-    --text: #1b1b1b;
+    --bg: #000;
+    --text: #dcdada;
     --temp: #dcdada;
     --light-text: #f5f5f5;
     --default-text: 2rem;
-    --rough: #cfcfcf;
+    --rough: #080808;
 }
      
 @font-face {
@@ -1556,12 +1556,12 @@ input::placeholder {
 
 .right-hand-side{
   position: absolute;
-  right: 0rem;
-  height: calc(100%);
+  right: 4rem;
+  height: calc(100% - 8rem);
   width: 70rem;
   filter: grayscale();
   overflow:hidden;
-  border: 0rem dashed #333;
+  border: 0.1rem dashed #333;
 }
 
 .cvs {

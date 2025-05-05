@@ -1347,6 +1347,11 @@ input::placeholder {
   transform-origin: center;
 }
 
+.the-principle-mobile-lisa{
+  font-size: 10rem;
+  margin-left: 6rem;
+}
+
 .animatetext{
   animation: text 1.5s infinite alternate ease-in-out;
   font-size: 7rem;
@@ -1732,6 +1737,9 @@ input::placeholder {
   font-size: 30rem;
 }
 
+
+
+
 .project-mob-wrap{
   height: 238rem;
   width: 100%;
@@ -1751,6 +1759,22 @@ input::placeholder {
   justify-content: center;
   transform: translateZ(0);
 }
+
+
+.project-display-p-f{
+  height: 185rem;
+  width: calc(100vw - 12rem);
+  margin-left: 6rem;
+  background: var(--rough);
+  border: 0.1rem dashed #333;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(0);
+}
+
+
 
 
 .project-name-mobile{

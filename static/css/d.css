@@ -1,6 +1,7 @@
 :root{
     --bg: #000;
     --text: #dcdada;
+    --temp: #dcdada;
     --light-text: #f5f5f5;
     --default-text: 2rem;
     --rough: #080808;
@@ -252,6 +253,7 @@ body {
     justify-content: center;
     z-index: 999;
     mix-blend-mode: difference;
+    color: var(--temp);
   }
 
   .menu{
@@ -1635,5 +1637,227 @@ input::placeholder {
 
 .great-text p{
   text-wrap: nowrap;
+}
+
+@media (hover:hover){
+  .mobile{
+    display: none;
+  }
+}
+
+
+
+/* mobile styles */
+
+.mobile{
+  animation: fade-In 0.7s ease forwards;
+  opacity: 0;
+}
+
+.nav-mobile{
+  position: fixed;
+  top: 8rem;
+  width: 100vw;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.l-h-s{
+  position: absolute;
+  left: 6rem;
+}
+
+
+.r-h-s{
+  position: absolute;
+  right: 6rem;
+}
+
+
+.first-spacer-mobile{
+  height: 35rem;
+  width: 100vw;
+  position: relative;
+
+}
+
+
+
+.projects-mobile{
+  display: flex;
+  flex-direction: column;
+  gap: 22rem;
+  width: calc(100vw - 12rem);
+  margin-left: 6rem;
+  height: fit-content;
+}
+
+.first-mobile{
+  height: 140rem;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rem;
+}
+
+.project-mob-wrap{
+  height: 238rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.project-display{
+  height: 185rem;
+  background: var(--rough);
+  border: 0.1rem dashed #333;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.project-name-mobile{
+  display: flex;
+  justify-content: center;
+  height: 63rem;
+  align-items: center;
+}
+
+.yo-m{
+  font-size: 15rem;
+}
+
+.project-discover-mobile{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 67rem;
+}
+
+@keyframes fade-In {
+  0% {
+      opacity: 0;
+
+  }
+
+  100% {
+      opacity: 1;
+
+  }
+}
+
+
+.box-inner-mobile{
+  position: absolute;
+  height: 35rem;
+  width: fit-content;
+  overflow: hidden;
+  border: 0.01rem dashed #333;
+  scale: 1.7;
+}
+
+.is-safari .box-inner-mobile img {
+  height: 35rem;
+  width: 60rem;
+}
+
+.spacing-mobile{
+  height: 50rem;
+}
+
+
+.b-f-t-mobile{
+  height: 45rem;
+  background: var(--rough);
+  width: calc(100vw - 12rem);
+  margin-left: 6rem;
+  border: 0.1rem dashed #333;
+  font-size: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.b-f-t-mobile2{
+  height: 45rem;
+  background: var(--rough);
+  width: calc(100%);
+
+  border: 0.1rem dashed #333;
+  font-size: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.c-i-mobile{
+  height: 160rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.1rem;
+  position: relative;
+}
+
+.link-mobile{
+  font-size: 15rem;
+}
+
+
+
+@media (max-width: 900px) and (orientation: portrait) {
+
+  body {
+    font-size: 5.7rem;
+  }   
+  
+  
+
+
+  .desktop {
+    display: none;
+}
+ .mobile{
+   display: block;
+
+ }
+
+ .change{
+  scale: 3;
+ }
+
+ .back-to-top{
+  left: 74rem;
+  bottom: 12rem;
+ }
+
+ .tiny-dash{
+  height: 0.1rem;
+  width: 4rem;
+  background: var(--text);
+}
+
+
+.whats-used{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 6rem;
+  font-size: 3.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.7rem;
+}
+
+
 }
 

@@ -1739,7 +1739,6 @@ input::placeholder {
 
 
 
-
 .project-mob-wrap{
   height: 238rem;
   width: 100%;
@@ -1823,6 +1822,12 @@ input::placeholder {
 }
 
 .is-safari .box-inner-mobile img {
+  height: 35rem;
+  width: 60rem;
+}
+
+
+.is-safari .box-inner-mobile video {
   height: 35rem;
   width: 60rem;
 }

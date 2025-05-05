@@ -1556,12 +1556,12 @@ input::placeholder {
 
 .right-hand-side{
   position: absolute;
-  right: 4rem;
-  height: calc(100% - 8rem);
+  right: 0rem;
+  height: calc(100%);
   width: 70rem;
   filter: grayscale();
   overflow:hidden;
-  border: 0.1rem dashed #333;
+  border: 0rem dashed #333;
 }
 
 .cvs {

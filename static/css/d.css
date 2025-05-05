@@ -1237,6 +1237,9 @@ input::placeholder {
   font-size: 7rem;
 }
 
+
+
+
 .inside-title-right2{
   position: absolute;
   left: calc(63rem);
@@ -1305,10 +1308,10 @@ input::placeholder {
   transform: translateY(0);
 }
 40% {
-  transform: translateY(-75px);
+  transform: translateY(-7.5rem);
 }
 60% {
-  transform: translateY(-32.5px);
+  transform: translateY(-3.25rem);
 }
 }
 
@@ -1653,7 +1656,7 @@ input::placeholder {
 }
 
 .nav-mobile{
-  position: fixed;
+  position: absolute;
   top: 8rem;
   width: 100vw;
   z-index: 999;
@@ -1674,12 +1677,40 @@ input::placeholder {
 
 
 .first-spacer-mobile{
-  height: 35rem;
+  height: 100rem;
   width: 100vw;
   position: relative;
-
 }
 
+.spacer-mobile{
+  height: 10rem;
+  width: 100vw;
+  position: relative;
+}
+
+
+
+
+.the-principle-mobile{
+  font-size: 15rem;
+  margin-left: 6rem;
+}
+
+.lil-text-mobile{
+  margin-left: 6rem;
+  width: 120rem;
+}
+
+.lil-text-mobile p{
+  font-family: 'sans-serif';
+}
+
+
+.lil-spacer-mobile{
+  height: 20rem;
+  width: 100vw;
+  position: relative;
+}
 
 
 .projects-mobile{
@@ -1732,6 +1763,10 @@ input::placeholder {
   font-size: 15rem;
 }
 
+.yo-m2{
+  font-size: 18rem;
+}
+
 .project-discover-mobile{
   display: flex;
   justify-content: center;
@@ -1768,6 +1803,11 @@ input::placeholder {
 
 .spacing-mobile{
   height: 50rem;
+}
+
+
+.spacing-mobile2{
+  height: 75rem;
 }
 
 
@@ -1856,6 +1896,45 @@ input::placeholder {
   align-items: center;
   gap: 1.7rem;
 }
+
+
+.the-principles{
+  height: 100rem;
+  width: 100vw;
+  position: relative;
+}
+
+
+.inside-a-random-image{
+  height: 100%;
+  width: calc(100vw - 12rem);
+  position: absolute;
+  right: 6rem;
+}
+
+
+.circle{
+  height: 35rem;
+  width: 35rem;
+
+}
+
+
+.boxintus{
+  height: 30rem;
+  width: 30rem;
+}
+
+
+.eye {
+  width: 40rem;
+  height: 40rem;
+}
+.pupil {
+  width: 20rem;
+  height: 20rem;
+}
+
 
 
 }

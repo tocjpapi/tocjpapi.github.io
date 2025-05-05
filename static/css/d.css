@@ -1658,8 +1658,9 @@ input::placeholder {
   position: fixed;
   top: 8rem;
   width: 100vw;
-  z-index: 9999;
-  mix-blend-mode: difference;
+  z-index: 999;
+
+  color: var(--text);
 }
 
 .l-h-s{

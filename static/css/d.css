@@ -1749,6 +1749,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateZ(0);
 }
 
 
@@ -1794,6 +1795,7 @@ input::placeholder {
   overflow: hidden;
   border: 0.01rem dashed #333;
   scale: 1.7;
+  transform: translateZ(0);
 }
 
 .is-safari .box-inner-mobile img {
@@ -1821,6 +1823,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateZ(0);
 }
 
 
@@ -1837,6 +1840,7 @@ input::placeholder {
   filter: grayscale();
   overflow: hidden;
   position: relative;
+  transform: translateZ(0);
 }
 
 .b-f-t-mobile2{
@@ -1917,6 +1921,7 @@ input::placeholder {
   height: 100rem;
   width: 100vw;
   position: relative;
+  transform: translateZ(0);
 }
 
 

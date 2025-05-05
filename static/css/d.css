@@ -1835,6 +1835,7 @@ input::placeholder {
   align-items: center;
   justify-content: center;
   filter: grayscale();
+  overflow: hidden;
 }
 
 .b-f-t-mobile2{

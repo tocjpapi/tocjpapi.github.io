@@ -1951,7 +1951,7 @@ input::placeholder {
 
 
 .bg {
-  position: fixed;
+  position: absolute;
   top: -50%;
   left: -50%;
   right: -50%;
@@ -1961,7 +1961,7 @@ input::placeholder {
   background: transparent url('../images/noise.png') repeat 0 0;
   background-repeat: repeat;
   animation: bg-animation .2s infinite;
-  opacity: 0.7;
+  opacity: 1;
   visibility: visible;
   z-index: 10;
   pointer-events: none;

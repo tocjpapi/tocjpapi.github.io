@@ -1824,6 +1824,19 @@ input::placeholder {
 }
 
 
+.profile-pic-mobile{
+  height: 145rem;
+  background: var(--rough);
+  width: calc(100vw - 12rem);
+  margin-left: 6rem;
+  border: 0.1rem dashed #333;
+  font-size: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: grayscale();
+}
+
 .b-f-t-mobile2{
   height: 45rem;
   background: var(--rough);

@@ -448,6 +448,10 @@ body {
   transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+.strict{
+  background: var(--temp);
+}
+
 .nav-item:hover .bottom-line3 {
   transform: scaleX(1);
 }
@@ -2003,7 +2007,12 @@ input::placeholder {
   height: 200%;
 }
 
-
+.dot{
+  right: 5.5rem;
+  top: 5.5rem;
+  height: 4.5rem;
+  width: 4.5rem;
+}
 
 }
 

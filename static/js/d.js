@@ -661,3 +661,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+
+const projD = document.querySelectorAll('.project-display-p-f');
+const projMain = document.querySelectorAll('.project-display');
+
+if (projD.length > 0) {
+  projD.forEach(container => {
+    if (!container.querySelector('.dot')) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      container.appendChild(dot);
+    }
+  });
+}
+
+if (projMain.length > 0) {
+  projMain.forEach(container => {
+    if (!container.querySelector('.dot')) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      container.appendChild(dot);
+    }
+  });
+}

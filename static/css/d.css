@@ -190,6 +190,10 @@ body {
     pointer-events: none;
   }
 
+  h1{
+    display: none;
+  }
+
 
   .turn-dark{
     opacity: 0;

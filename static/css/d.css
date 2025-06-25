@@ -126,7 +126,7 @@ html {
     margin: 0;
     padding: 0;
     font-family: 'sans-serif';
-    background-color: var(--bg);
+    background-color: #d6d4d2;
     color: var(--text);
     font-size: calc(100vw / 1512 * 10);
     -webkit-font-smoothing: antialiased;

@@ -1,10 +1,10 @@
 :root{
-    --bg: #dcdada;
-    --text: #1b1b1b;
+    --bg: #000;
+    --text: #dcdada;
     --temp: #dcdada;
     --light-text: #f5f5f5;
     --default-text: 2rem;
-    --rough: #cfcfcf;
+    --rough: #080808;
 }
      
 @font-face {
@@ -126,7 +126,7 @@ html {
     margin: 0;
     padding: 0;
     font-family: 'sans-serif';
-    background-color: #d6d4d2;
+    background-color: var(--bg);
     color: var(--text);
     font-size: calc(100vw / 1512 * 10);
     -webkit-font-smoothing: antialiased;

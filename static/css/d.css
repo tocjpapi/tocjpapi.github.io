@@ -1,10 +1,10 @@
 :root{
-    --bg: #000;
-    --text: #dcdada;
+    --bg: #dcdada;
+    --text: #1b1b1b;
     --temp: #dcdada;
     --light-text: #f5f5f5;
     --default-text: 2rem;
-    --rough: #080808;
+    --rough: #cfcfcf;
 }
      
 @font-face {
@@ -260,6 +260,7 @@ body {
     z-index: 999;
     mix-blend-mode: difference;
     color: var(--temp);
+    display: none;
   }
 
   .menu{
@@ -1674,7 +1675,7 @@ input::placeholder {
 
 .nav-mobile{
   position: absolute;
-  top: 8rem;
+  top: 10rem;
   width: 100vw;
   z-index: 999;
 
@@ -1683,13 +1684,13 @@ input::placeholder {
 
 .l-h-s{
   position: absolute;
-  left: 6rem;
+  left: 7rem;
 }
 
 
 .r-h-s{
   position: absolute;
-  right: 6rem;
+  right: 8rem;
 }
 
 
@@ -1879,7 +1880,7 @@ input::placeholder {
   background: var(--rough);
   width: calc(100vw - 12rem);
   margin-left: 6rem;
-  border: 0.1rem dashed #333;
+
   font-size: 15rem;
   display: flex;
   align-items: center;
@@ -1917,6 +1918,10 @@ input::placeholder {
   font-size: 15rem;
 }
 
+.move-m{
+  position: absolute;
+  right: 6rem;
+}
 
 
 .desktop{
@@ -1934,6 +1939,7 @@ input::placeholder {
 
 
 @media (max-width: 900px) and (orientation: portrait) {
+
 
   body {
     font-size: 5.7rem;
@@ -2029,11 +2035,26 @@ input::placeholder {
   width: 3.5rem;
 }
 
+  :root{
+    --bg: #fff;
+    --text: #333;
+    --temp: #dcdada;
+    --rough: #f5f5f5;
+}
+
 }
 
 @media (pointer: coarse) {
   html, body {
     overscroll-behavior: auto;
   }
+
+  :root{
+    --bg: #fff;
+    --text: #333;
+    --temp: #dcdada;
+}
+
+    
 }
 

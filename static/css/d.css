@@ -1920,7 +1920,7 @@ input::placeholder {
 
 .move-m{
   position: absolute;
-  right: 6rem;
+  left: 8rem;
 }
 
 
@@ -2040,6 +2040,10 @@ input::placeholder {
     --text: #333;
     --temp: #dcdada;
     --rough: #f5f5f5;
+}
+
+.tint{
+  display: none;
 }
 
 }

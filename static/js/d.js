@@ -685,3 +685,28 @@ if (projMain.length > 0) {
     }
   });
 }
+
+
+(function setThemeColor() {
+  let meta = document.querySelector('meta[name="theme-color"]');
+
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute('name', 'theme-color');
+    document.head.appendChild(meta);
+  }
+
+  meta.setAttribute('content', '#050501');
+})();
+(function setThemeColorDark() {
+  let meta = document.querySelector('meta[name="theme-color"][media="(prefers-color-scheme: dark)"]');
+
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute('name', 'theme-color');
+    meta.setAttribute('media', '(prefers-color-scheme: dark)');
+    document.head.appendChild(meta);
+  }
+
+  meta.setAttribute('content', '#050501');
+})();
